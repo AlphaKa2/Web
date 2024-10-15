@@ -1,0 +1,78 @@
+.balance-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0;
+    background-color: #4b6bfb;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.question-header {
+    text-align: left;
+    font-size: 2.5vw; /* 상대 단위로 변경 */
+    font-weight: bold;
+    font-family: poppin;
+    color: white;
+    margin-left: 1vw;
+    margin-bottom: 3vw;
+    margin-top: 1vw;
+    max-width: 1600px;
+}
+
+.options-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+    width: 100%;
+    max-width: 1000px;
+    flex-wrap: wrap; /* 작은 화면에서 줄바꿈 */
+}
+
+.vs-text {
+    font-size: 4vw;
+    font-weight: bold;
+    color: white;
+}
+
+.option-card {
+    width: 40vw;
+    max-width: 500px;
+    height: 460px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1vw;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option-card img {
+    width: 100%;
+    max-width: 470px;
+    height: 370px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.option-card:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .question-header {
+        font-size: 5vw;
+    }
+
+    .option-card {
+        width: 80vw;
+    }
+
+    .vs-text {
+        font-size: 8vw;
+    }
+}

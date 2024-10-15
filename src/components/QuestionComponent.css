@@ -1,0 +1,136 @@
+.question-container {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    padding-top: 50px;
+}
+
+.question-number {
+    position: absolute;
+    top: -55px;
+    right: 15px;
+    font-size: 2.5vw;
+    color: white;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.question-header {
+    margin-top: 20px; /* 상단 여백 조정 */
+    font-size: 2.5vw;
+    font-weight: bold;
+    font-family: Poppins;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* 이전 버튼 스타일 - 헤더와 질문 사이 좌측 상단에 배치 */
+.previous-button {
+    position: absolute;
+    top: 110px; /* 헤더 아래 위치하도록 설정 */
+    left: 20px; /* 좌측에 고정 */
+    font-size: 1.2vw;
+    padding: 0.8vw 1.6vw;
+    background-color: #ffffff;
+    color: #4b6bfb;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 100; /* 모든 요소 위에 표시되도록 설정 */
+}
+
+.previous-button:hover {
+    background-color: #4ca5ff;
+}
+
+.options-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.option-card {
+    flex-basis: 45%;
+    max-width: 850px;
+    flex-grow: 1;
+    height: auto;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2vw;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option-card:hover {
+    transform: scale(1.05);
+}
+
+.option-card img {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.option-text {
+    font-size: 1.8vw;
+    font-family: Poppins;
+    font-weight: bold;
+    color: #4b6bfb;
+    text-align: center;
+    margin-top: 1.5vw;
+}
+
+.vs-text {
+    font-size: 6vw;
+    font-weight: bold;
+    color: #ffffff;
+    position: absolute;
+    top: 60%;
+    left: 49.5%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* 반응형 처리를 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+    .question-number {
+        font-size: 4vw;
+        top: 5px;
+        right: 10px;
+    }
+
+    .question-header {
+        font-size: 5vw;
+        margin-top: 50px; /* 모바일에서 질문과 여백 조정 */
+    }
+
+    .option-card {
+        width: 80vw;
+    }
+
+    .option-card img {
+        width: 90%;
+    }
+
+    .vs-text {
+        font-size: 10vw;
+    }
+
+    .question-number,
+    .option-text,
+    .previous-button {
+        font-size: 4vw;
+    }
+}

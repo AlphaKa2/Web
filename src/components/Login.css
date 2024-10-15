@@ -1,0 +1,139 @@
+/* 전체 페이지 레이아웃 */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  
+  /* 전체 페이지 레이아웃 */
+  .login-container {
+    display: flex;
+    height: 88vh;
+    padding-top: 0; /* 상단에 여백 제거 */
+    margin: 0; /* 전체 페이지의 여백도 제거 */
+  }
+  
+  /* 좌측 이미지 섹션 */
+  .login-image-section {
+    flex: 1;
+    background-image: url('../assets/images/Login.jpg'); /* 절대 경로로 public 폴더에 저장된 이미지 참조 */
+    background-size: cover;
+    background-position: center;
+    height: 89vh; /* 화면 전체 높이를 채움 */
+    width: 60vw; /* 화면의 절반 너비를 차지 */
+  }
+  
+  /* 우측 로그인 폼 섹션 */
+  .login-form-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+  
+  /* 로그인 폼 */
+  .login-form {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-form h1 {
+    font-size: 36px;
+    color: #4B6BFB;
+    margin-bottom: 40px;
+  }
+  
+  /* 이메일 및 비밀번호 입력 필드 */
+  .login-form input[type="email"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .login-form input::placeholder {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  .login-form a {
+    align-self: flex-end;
+    font-size: 12px;
+    color: #4B6BFB;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  /* 로그인 버튼 */
+  .login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4B6BFB;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-form button:hover {
+    background-color: #3a56e0;
+  }
+  
+  /* OR 텍스트 스타일 */
+  .or-text {
+    margin: 20px 0;
+    color: #888;
+    font-size: 14px;
+  }
+  
+  /* 소셜 로그인 버튼 */
+  .social-login-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .social-login-buttons button {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #666;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .social-login-buttons button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .social-login-buttons img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  /* 회원가입 링크 */
+  .signup-link {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .signup-link a {
+    color: #4B6BFB;
+    text-decoration: none;
+  }
+  

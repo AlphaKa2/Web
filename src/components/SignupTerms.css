@@ -1,0 +1,73 @@
+.signup-terms-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 80px;
+}
+
+.terms-section {
+  margin-bottom: 30px;
+}
+
+.terms-section h3 {
+  margin-bottom: 10px;
+}
+
+.terms-section textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* 체크박스와 텍스트 정렬 및 우측 정렬 */
+.terms-agreement {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* 우측 정렬 */
+  gap: 5px; /* 체크박스와 텍스트 사이 간격 */
+}
+
+/* 체크박스 클릭 영역 제한 */
+.terms-agreement input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+  pointer-events: auto; /* 체크박스만 클릭 가능하게 설정 */
+  width: 16px; /* 기본 체크박스 크기로 설정 */
+  height: 16px; /* 기본 체크박스 크기로 설정 */
+}
+
+.terms-agreement span {
+  pointer-events: none; /* 텍스트 클릭을 비활성화 */
+}
+
+.button-container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-top: 20px;
+}
+
+.progress-btn1, .cancel-btn1 {
+  padding: 20px 40px;
+  background-color: #4b6bfb;
+  color: white;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.cancel-btn1 {
+  background-color: #ccc;
+  color: #666;
+}
