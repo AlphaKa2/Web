@@ -1,0 +1,138 @@
+.mbti-result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh; /* 높이 줄이기 */
+    min-height: 600px; /* 최소 높이 설정 */
+    background-color: #4b6bfb;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    width: 850px;
+    height: 500px; /* 카드 높이 줄이기 */
+    margin-top: 0;
+}
+
+.result-image {
+    width: 430px; /* 이미지 크기 조정 */
+    height: 350px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.result-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4b6bfb;
+}
+
+.result-subtitle {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4b6bfb;
+    margin-top: -10px;
+    align-items: center;
+}
+
+.result-description {
+    font-size: 18px;
+    font-family: Poppin;
+    font-weight: bold;
+    color: #333333;
+    margin-top: 10px;
+    line-height: 1.6;
+    max-width: 750px; /* 텍스트 폭 조정 */
+    text-align: center;
+}
+
+.share-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 20px 30px;
+    background-color: #4b6bfb;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-button img {
+    width: 40px;
+    height: 40px;
+}
+
+.share-button:hover {
+    background-color: #3a56c7;
+}
+
+.confirm-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 22px;
+    padding: 20px 30px;
+    background-color: #ffff;
+    color: #4b6bfb;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.confirm-button:hover {
+    background-color: #3a56c7;
+}
+
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff6b6b;
+    opacity: 0.8;
+    animation: confetti-fall 4s linear infinite;
+    border-radius: 50%;
+}
+
+.confetti-piece:nth-child(odd) { background-color: #ffd93b; }
+.confetti-piece:nth-child(3n) { background-color: #6bc9ff; }
+.confetti-piece:nth-child(4n) { background-color: #8bc34a; }
+.confetti-piece:nth-child(5n) { background-color: #ff4081; }
+.confetti-piece:nth-child(6n) { background-color: #9c27b0; }
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateY(50vh) rotate(180deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}

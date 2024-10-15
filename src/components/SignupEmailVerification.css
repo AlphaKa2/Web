@@ -1,0 +1,95 @@
+.signup-email-verification-container .verification-form {
+  /* 이 페이지에만 적용되는 스타일 */
+}
+
+
+.signup-email-verification-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.verification-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 120px;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 500px;
+}
+
+.send-code-btn {
+  padding: 10px 15px;
+  background-color: #4b6bfb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.send-code-btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.verify-btn {
+  padding: 9px 46px;
+  background-color: #4b6bfb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.verify-btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.signup-actions {
+  display: flex;
+  justify-content: space-between; /* 버튼 간격을 최대화 */
+  width: 100%; /* 컨테이너 전체 너비 사용 */
+  max-width: 500px; /* 원하는 버튼 최대 너비 */
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.continue-btn2, .cancel-btn2 {
+  padding: 20px 40px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.continue-btn2 {
+  background-color: #4b6bfb;
+  color: white;
+}
+
+.cancel-btn2 {
+  background-color: #ccc;
+  color: #666;
+}

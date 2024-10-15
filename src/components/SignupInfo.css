@@ -1,0 +1,77 @@
+.signup-info-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.gender-selection {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.gender-selection button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.gender-selection button.selected {
+  background-color: #4b6bfb;
+  color: white;
+  border: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 20px;
+}
+
+.signup-complete, .signup-cancel {
+  padding: 20px 40px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.signup-complete {
+  background-color: #4b6bfb;
+  color: white;
+}
+
+.signup-cancel {
+  background-color: #ccc;
+  color: #666;
+}

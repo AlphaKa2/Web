@@ -1,0 +1,142 @@
+/* 전체 레이아웃 */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo-img {
+  width: 59px;
+  height: auto;
+  cursor: pointer;
+}
+
+/* 로그인 상태에 따른 텍스트 및 아이콘 조정 */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 45px; /* 아이콘 간 간격 줄이기 */
+}
+
+/* "로그인" 텍스트 스타일 */
+.login-text {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  margin-right: 20px; /* 헤더의 제일 우측에 위치 */
+}
+
+/* 아이콘 기본 스타일 */
+.icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+/* 프로필 사진 */
+.profile-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 30px; /* 왼쪽으로 살짝 이동 */
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 드롭다운 메뉴 */
+.dropdown-menu {
+  position: absolute;
+  top: 55px;
+  left: -200%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  list-style-type: none;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  width: 150px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+/* 검색바 */
+.search-bar {
+  position: absolute;
+  top: 100px;
+  right: 80px;
+  width: 200px;
+  height: 40px;
+}
+
+.search-bar input {
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* 알림 드롭다운 */
+.notification-container {
+  position: relative;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  list-style-type: none;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+}
+
+.notification-dropdown li {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.notification-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.login-text {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 16px;
+  color: #4B6BFB;
+  margin-right: 40px;
+  font-size: 25px;
+}

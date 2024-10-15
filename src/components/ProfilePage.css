@@ -1,0 +1,263 @@
+/* ProfilePage.css */
+.profile-page1 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  
+  .profile-content1 {
+    display: flex;
+    flex-grow: 1;
+    padding: 20px;
+    align-items: flex-start;
+  }
+  
+  .profile-sidebar1 {
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
+  .profile-image1 {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .profile-image1 img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .profile-info1 h2 {
+    margin-top: 10px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .profile-stats1 {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .profile-stats1 p {
+    text-align: center;
+    margin: 0;
+    flex: 1;
+  }
+  
+  .profile-stats1 p span {
+    display: block;
+    font-size: 18px;
+  }
+  
+  .mbti-section1 h3 {
+    margin-top: 20px;
+  }
+  
+  .btn-retest1 {
+    margin-top: 10px;
+    margin-left: 65%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 100px;
+  }
+  
+  .divider1 {
+    margin: 30px 0;
+    height: 1px;
+    background-color: #e0e0e0;
+  }
+  
+  .notification-preference1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .notification-text1 {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  .switch1 {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+  
+  .switch1 input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider1 {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+  }
+  
+  .slider1:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider1 {
+    background-color: #2196F3;
+  }
+  
+  input:checked + .slider1:before {
+    transform: translateX(20px);
+  }
+  
+  /* 비밀번호 변경 및 회원 탈퇴 */
+  .password-change1, .account-deletion1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn-change1, .btn-delete1 {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-change1 {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .btn-delete1 {
+    background-color: red;
+    color: white;
+  }
+  
+  /* 여행 계획 카드 */
+  .travel-plans1 {
+    width: 80%;
+    margin-top: 80px;
+  }
+  
+  .travel-card-container1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .travel-card1 {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .travel-card1 img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .travel-card-footer1 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .info-field1 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .info-field1 input {
+    flex: 1;
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .info-field1 svg {
+    color: #007bff;
+    font-size: 20px;
+  }
+  
+  .info-form1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .info-field1 input,
+  .info-field1 textarea {
+    margin-left: 10px;
+    flex-grow: 1;
+    padding: 5px;
+  }
+  
+  .form-group1 input,
+  .form-group1 textarea {
+    flex: 1;
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-save1, .btn-cancel1 {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-cancel1 {
+    background-color: red;
+    margin-left: 10px;
+  }
+  
+  .btn-edit1 {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* 프로필 정보 섹션 위치 조정 */
+  .profile-info-section1 {
+    flex-grow: 1;
+    margin-top: 50px;
+  }
+  
