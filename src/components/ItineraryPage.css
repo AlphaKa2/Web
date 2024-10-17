@@ -1,0 +1,126 @@
+.travel-details {
+	width: 30%; /* 화면의 30%를 차지하도록 설정 */
+	height: 100vh; /* 세로로 100% 사용 */
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+	overflow-y: auto; /* 내용이 넘칠 경우 스크롤 추가 */
+}
+  
+.travel-info {
+	margin-bottom: 50px; /* 간격을 더 넓게 설정 */
+	padding: 20px; /* 블록 형태로 추가적인 여백 설정 */
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	background-color: #f9f9f9;
+}
+
+.travel-info p {
+	margin-bottom: 20px; /* 간격을 더 넓게 설정 */
+}
+
+  
+.travel-info h2 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 30px; /* 간격을 더 넓게 설정 */
+}
+  
+.schedule-details {
+	margin-bottom: 50px; /* 간격을 더 넓게 설정 */
+	padding: 20px; /* 블록 형태로 추가적인 여백 설정 */
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	background-color: #f9f9f9;
+}
+  
+.schedule-details h2 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 30px; /* 간격을 더 넓게 설정 */
+}
+  
+.day-schedule {
+	margin-bottom: 40px; /* 간격을 더 넓게 설정 */
+}
+  
+.day-header {
+	font-weight: bold;
+	margin-bottom: 25px; /* 간격을 더 넓게 설정 */
+}
+  
+.time-location {
+	display: flex;
+	align-items: flex-start; /* 버튼을 텍스트의 위쪽에 정렬 */
+	justify-content: space-between;
+	margin-bottom: 25px; /* 간격을 더 넓게 설정 */
+}
+  
+.time-location span {
+	flex-grow: 1;
+	margin-top: 5px; /* 텍스트와 버튼의 수평 맞추기 */
+}
+
+.time-location button {
+	margin-top: 0; /* 버튼을 텍스트와 수평 맞춤 */
+}
+  
+.new-schedule {
+	display: flex;
+	align-items: baseline; /* 입력 필드와 버튼의 기준선을 맞춤 */
+	gap: 10px;
+	margin-top: 20px; /* 간격 설정 */
+}
+  
+.new-schedule input[type="text"],
+.new-schedule input[type="time"] {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+  
+.add-btn {
+	padding: 5px 10px;
+	background-color: #1d2fd1;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 0; /* 여분의 위쪽 마진 제거 */
+}
+
+
+.delete-btn {
+	padding: 5px 10px;
+	background-color: #1d2fd1;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+  
+.delete-btn {
+	background-color: #f15449;
+}
+  
+.action-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-top: 50px; /* 간격을 더 넓게 설정 */
+}
+  
+.save-btn,
+.cancel-btn {
+	padding: 10px 20px;
+	background-color: #1d2fd1;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+  
+.cancel-btn {
+	background-color: #f15449;
+}

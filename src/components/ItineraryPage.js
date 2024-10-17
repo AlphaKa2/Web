@@ -1,17 +1,18 @@
-// 여행 계획 상세 페이지.js
+// TravelDetails.js
 import React from 'react';
+import './ItineraryPage.css'; // 스타일 파일을 추가합니다.
 
 const ItineraryPage = () => {
   return (
-    <div className="travel-details1">
-      <div className="travel-info1">
+    <div className="travel-details">
+      <div className="travel-info">
         <h2>여행 정보</h2>
         <p><strong>여행 장소:</strong> 제주도</p>
         <p><strong>여행 기간:</strong> 2024-07-12 ~ 2024-07-13 (2일)</p>
       </div>
-      <div className="schedule-details1">
+      <div className="schedule-details">
         <h2>일정 상세</h2>
-        <div className="day-schedule1">
+        <div className="day-schedule">
           <div className="day-header">1일차</div>
           <div className="time-location">
             <span>10:00 - 12:00 : 광안리</span>

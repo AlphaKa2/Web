@@ -1,6 +1,7 @@
 // Post.js
 import React from 'react';
 import PropTypes from 'prop-types';
+import './EachPost.css';
 
 const Post = ({ region, title, description, image, tags}) => (
   <article className={`post-item ${region}`}>

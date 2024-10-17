@@ -2,8 +2,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Isotope from 'isotope-layout';
 import imagesLoaded from 'imagesloaded';
-import Header from './Profile_Tags';
+import Header from './ProfileTags';
 import Post from './EachPost';
+import './PostsPage.css';
+import './EachPost.css';
+import './ProfileTags.css'
+
 
 const PostsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);

@@ -18,7 +18,7 @@ const Header = ({ buttonText = "글쓰기", showTags = true, onFilterChange }) =
     {/* showTags가 true일 때만 태그 목록을 표시 */}
     {showTags && (
       <section className="tagList">
-        <article className="tag-list tagList2">
+        <article className="tagList2">
           <h4>태그 목록</h4>
           <hr />
           <p onClick={() => onFilterChange('all')}><a className="left_tag" href="#">전체보기</a></p>
