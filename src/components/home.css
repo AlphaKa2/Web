@@ -7,6 +7,70 @@ body {
   
 }
 
+.section {
+  position: relative;
+}
+
+/* 첫 번째 섹션 스크롤 버튼 */
+.scroll-button1 {
+  position: absolute;
+  bottom: 10px; /* 첫 번째 섹션 하단에서 10px 위 */
+  right: 5%; /* 오른쪽에서 5% 위치 */
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 3;
+}
+
+.scroll-button1 img {
+  width: 30px; /* 첫 번째 섹션 버튼 이미지 크기 */
+  height: auto;
+}
+
+.scroll-button1:hover img {
+  transform: scale(1.1);
+}
+
+/* 두 번째 섹션 스크롤 버튼 */
+.scroll-button2 {
+  position: absolute;
+  bottom: 20px; /* 두 번째 섹션 하단에서 20px 위 */
+  right: 5%; /* 중앙 위치 */
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 3;
+}
+
+.scroll-button2 img {
+  width: 25px; /* 두 번째 섹션 버튼 이미지 크기 */
+  height: auto;
+}
+
+.scroll-button2:hover img {
+  transform: scale(1.1);
+}
+
+/* 세 번째 섹션 스크롤 버튼 */
+.scroll-button3 {
+  position: absolute;
+  top: 10px; /* 세 번째 섹션 상단에서 10px 아래 */
+  right: 10%; /* 오른쪽에서 10% 위치 */
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 3;
+}
+
+.scroll-button3 img {
+  width: 35px; /* 세 번째 섹션 버튼 이미지 크기 */
+  height: auto;
+}
+
+.scroll-button3:hover img {
+  transform: scale(1.1);
+}
+
+
+
+
 a {
   text-decoration: none;
 }

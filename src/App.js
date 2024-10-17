@@ -18,6 +18,7 @@ import BlogPost from "./components/BlogPost";
 import Footer from "./components/Footer";
 import PostsPage from "./components/PostsPage";
 import CreatePlan from "./components/CreatePlan";
+import CreatePlan2 from "./components/CreatePlan2";
 import ItineraryPage from './components/ItineraryPage';
 import ProfilePage from "./components/ProfilePage";
 import MyTripList from "./components/MyTripList";
@@ -78,6 +79,7 @@ function App() {
           <Route path="/blog-posts" element={<PrivateRoute><BlogPosts /></PrivateRoute>} />
           <Route path="/posts-page" element={<PrivateRoute><PostsPage /></PrivateRoute>} />
           <Route path="/create-plan" element={<PrivateRoute><CreatePlan /></PrivateRoute>} />
+          <Route path="/create-plan2" element={<PrivateRoute><CreatePlan2 /></PrivateRoute>} />
           <Route path="/itinerary" element={<PrivateRoute><ItineraryPage /></PrivateRoute>} />
           <Route path="/my-trip-list" element={<PrivateRoute><MyTripList /></PrivateRoute>} />
           <Route path="/misc" element={<Misc />} />

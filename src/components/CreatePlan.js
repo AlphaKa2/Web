@@ -15,7 +15,7 @@ function CreatePlan() {
 
   const handleRecommendation = () => {
     console.log(`장소: ${location}, 날짜: ${startDate} ~ ${endDate}, 예산: ${budget}`);
-    navigate('/itinerary');
+    navigate('/create-plan2');
   };
 
   const toggleDropdown = () => {

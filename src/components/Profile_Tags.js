@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Header = ({ buttonText = "글쓰기", showTags = true, onFilterChange }) => (
+const Profile_Tags = ({ buttonText = "글쓰기", showTags = true, onFilterChange }) => (
   <header>
     <section className="member">
       <article className="profile">
@@ -33,10 +33,10 @@ const Header = ({ buttonText = "글쓰기", showTags = true, onFilterChange }) =
   </header>
 );
 
-Header.propTypes = {
+Profile_Tags.propTypes = {
   buttonText: PropTypes.string,
   showTags: PropTypes.bool,
   onFilterChange: PropTypes.func.isRequired,
 };
 
-export default Header;
+export default Profile_Tags;
