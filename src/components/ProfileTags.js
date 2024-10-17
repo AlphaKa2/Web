@@ -1,9 +1,8 @@
-// Header.js
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const Profile_Tags = ({ buttonText = "글쓰기", showTags = true, onFilterChange }) => (
-  <header>
+  <header className="Left_Profile">
     <section className="member">
       <article className="profile">
         <img src="img/잔망루피.png" alt="프로필 이미지" />

@@ -1,26 +1,27 @@
 .footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .footer-left {
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .footer-center a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-center a:hover {
-    color: #4e7df6; /* 링크에 마우스를 올렸을 때 색상 */
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative; /* or fixed if you want it to stay in the same position */
+  z-index: 10; /* Adjust this value to be higher than other components */
+}
+
+.footer-left {
+  font-size: 14px;
+  color: #333;
+}
+
+.footer-center a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-center a:hover {
+  color: #4e7df6; /* 링크에 마우스를 올렸을 때 색상 */
+}

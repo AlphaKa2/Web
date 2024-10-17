@@ -1,4 +1,4 @@
-* {
+/* * {
 	margin: 0px;
 	padding: 0px;
 }
@@ -19,17 +19,20 @@ a{
 
 body {
 	background-color: #ffffff;
-} 
+}  */
 
-header {	
+header.Left_Profile {	
 	width: 18%;
-	height: 100%;
-	background:rgb(255, 255, 255);
+	height: 1px;
+	background: rgb(255, 255, 255);
 	position: fixed;
 	top: 0px;
 	left: 0px;
 	transition: 0.5s;
+	margin-top: 100px;
+	z-index: 1; /* Lower z-index so that it stays behind the footer */
 }
+
 
   
 section.member {
@@ -130,3 +133,4 @@ section.tagList article.tagList2 .left_tag:hover {
     color: #000000; /* hover 시 글씨 색상을 검정색으로 변경 */
 	font-weight: bold;
 }
+

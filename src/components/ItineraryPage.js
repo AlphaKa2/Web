@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-// TravelDetails.js
-import React from 'react';
-import './ItineraryPage.css'; // 스타일 파일을 추가합니다.
-=======
 import React, { useState, useRef } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import './ItineraryPage.css';
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
+
 
 const ItineraryPage = () => {
   const [schedule, setSchedule] = useState([]);
@@ -77,40 +72,11 @@ const ItineraryPage = () => {
   };
 
   const mapContainerStyle = {
-    width: '100%',
+    width: '98%',
     height: '100%'
   };
 
   return (
-<<<<<<< HEAD
-    <div className="travel-details">
-      <div className="travel-info">
-        <h2>여행 정보</h2>
-        <p><strong>여행 장소:</strong> 제주도</p>
-        <p><strong>여행 기간:</strong> 2024-07-12 ~ 2024-07-13 (2일)</p>
-      </div>
-      <div className="schedule-details">
-        <h2>일정 상세</h2>
-        <div className="day-schedule">
-          <div className="day-header">1일차</div>
-          <div className="time-location">
-            <span>10:00 - 12:00 : 광안리</span>
-            <button className="delete-btn">🗑️</button>
-          </div>
-          <div className="time-location">
-            <span>14:00 - 16:00 : 서면</span>
-            <button className="delete-btn">🗑️</button>
-          </div>
-          <div className="time-location">
-            <span>18:08 - 19:19 : 부산 랜덤</span>
-            <button className="delete-btn">🗑️</button>
-          </div>
-          <div className="new-schedule">
-            <input type="text" placeholder="새로운 장소" />
-            <input type="time" />
-            <input type="time" />
-            <button className="add-btn">추가</button>
-=======
     <div className="schedule-and-map">
       <div className="travel-details">
         <div className="travel-info">
@@ -167,7 +133,7 @@ const ItineraryPage = () => {
               </div>
               <button className="add-btn" onClick={handleAddSchedule}>추가</button>
             </div>
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
+
           </div>
         </div>
         <div className="action-buttons">

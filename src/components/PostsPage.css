@@ -3,6 +3,8 @@
 	margin-left: 330px;
 	box-sizing: border-box;
 	padding: 20px;
+	z-index: 5; /* Lower z-index compared to footer */
+	position: relative; /* Ensure it stays below the footer */
 }
 
 .posts{
@@ -10,11 +12,8 @@
 }
 
 @media screen and (max-width: 1599px) {
-<<<<<<< HEAD
-	header {
-=======
-	Profile_Tags {
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
+	
+	.Left_Profile {
 		display:none;
 	}
 	.posts-page{
@@ -35,6 +34,7 @@ section .wrap_editor{
 	align-items: center;
 	margin-top: 50px;
 	width: 100%;
+	margin-bottom: 100px;
   }
   
   .pagination button {
@@ -74,8 +74,5 @@ section .wrap_editor{
 	outline: none;
 	width: 300px;
 	font-size: 16px;
-<<<<<<< HEAD
+
   }
-=======
-  }
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db

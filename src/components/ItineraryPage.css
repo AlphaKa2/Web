@@ -1,21 +1,12 @@
 .travel-details {
-<<<<<<< HEAD
-	width: 30%; /* 화면의 30%를 차지하도록 설정 */
-	height: 100vh; /* 세로로 100% 사용 */
-=======
 	width: 30%; /* 30% for the left side */
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
 	padding: 20px;
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
-	overflow-y: auto; /* 내용이 넘칠 경우 스크롤 추가 */
-=======
 	overflow-y: auto;
 	/* Remove the margin for better alignment */
 	margin: 0;
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
 }
   
 .travel-info {
@@ -75,25 +66,7 @@
 .time-location button {
 	margin-top: 0; /* 버튼을 텍스트와 수평 맞춤 */
 }
-<<<<<<< HEAD
-  
-.new-schedule {
-	display: flex;
-	align-items: baseline; /* 입력 필드와 버튼의 기준선을 맞춤 */
-	gap: 10px;
-	margin-top: 20px; /* 간격 설정 */
-}
-  
-.new-schedule input[type="text"],
-.new-schedule input[type="time"] {
-	padding: 5px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-}
-  
-.add-btn {
-	padding: 5px 10px;
-=======
+
 
 .schedule-and-map {
 	display: flex;
@@ -123,12 +96,7 @@
 	border: 1px solid #ccc;
 }
 
-  .map-container {
-	flex: 1;
-	height: 400px; /* Set a fixed height for the map */
-	border: 1px solid #ccc;
-	border-radius: 5px;
-  }
+  
   
   .new-schedule input[type="text"],
   .new-schedule input[type="time"] {
@@ -142,17 +110,11 @@
  
 .add-btn {
 	padding: 10px;
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
 	background-color: #1d2fd1;
 	color: white;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-<<<<<<< HEAD
-	margin-top: 0; /* 여분의 위쪽 마진 제거 */
-}
-
-=======
 	width: 100%;
 	box-sizing: border-box;
 	margin-top: 15px; /* Push the button down slightly */
@@ -171,7 +133,7 @@
 	  width: 100%; /* Make inputs and button take full width on smaller screens */
 	}
   }
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
+
 
 .delete-btn {
 	padding: 5px 10px;
@@ -182,9 +144,7 @@
 	cursor: pointer;
 }
   
-.delete-btn {
-	background-color: #f15449;
-}
+
   
 .action-buttons {
 	display: flex;
@@ -206,19 +166,12 @@
 .cancel-btn {
 	background-color: #f15449;
 }
-<<<<<<< HEAD
-=======
 
-
-/* map css */
-.schedule-and-map {
+.schedule-and-map{
 	display: flex;
-	height: 100vh; /* Occupy full viewport height */
 }
+
   
 .map-container {
-	flex: 1;
-	height: 100%; /* Ensure it fills the full height */
+	flex: 1;/* Ensure it fills the full height */
 }
-  
->>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
