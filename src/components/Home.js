@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import "./home.css";
 import TagSection from "./TagSection"; // TagSection 컴포넌트 추가
+import React, { useState, useRef } from "react";
 
 import JejuImage from '../assets/images/Jeju.jpeg';
 import UlsanImage from '../assets/images/ulsan.jpg';
 import TestImage from '../assets/images/Main Img.png';
 import AuthorImage from '../assets/images/사진.jpg'; // 임시로 프로필 사진 경로 설정
-import MidBannerImage from '../assets/images/ybanner.png';
 import PAImage from '../assets/images/Pani_Aus.jpg';
 import YoutubeImage from '../assets/images/youtubeB.png';
 
@@ -19,6 +19,14 @@ function Home() {
   
   const handleClick = (id) => {
     navigate(`/blog/${id}`);
+  };
+
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const section3Ref = useRef(null);
+
+  const scrollToSection = (sectionRef) => {
+    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   // 더미 데이터 (지금 뜨는 게시글)
@@ -89,6 +97,8 @@ function Home() {
   return (
     <div>
       <main>
+
+      <section ref={section1Ref} className="section first-section">
         <section className="banner">
           <h2>
             우리가 걸어<span className="highlight">온 길</span>, <br />
@@ -99,9 +109,14 @@ function Home() {
             온길과 함께라면, 복잡한 계획은 잊고, 여행의 즐거움만 누리세요
           </p>
         </section>
+        
 
         <TagSection />
 
+        
+      </section>
+
+      <section ref={section2Ref} className="section second-destinations"></section>
         {/* 지금 뜨는 게시글 섹션 */}
         <section className="trending-posts">
           <h1>지금 뜨는 게시글</h1>
@@ -160,8 +175,11 @@ function Home() {
             </div>
             <button className="carousel-btn next-btn" onClick={nextMBTISlide}>{">"}</button>
           </div>
+        
+          
         </section>
 
+      <section ref={section3Ref} className="section third-courses">
       <div class="main-container">
 
         {/* 유튭 배너 */}
@@ -172,9 +190,12 @@ function Home() {
           <input 
             type="text" placeholder="유튜브 링크를 입력하세요" className="youtube-link-input" 
           />
-          <button className="extract-course-btn">
-            <img src={YoutubeImage} alt="YouTube Icon" className="button-icon" />
-          </button>
+          <button 
+            className="extract-course-btn" 
+            onClick={() => navigate('/Itinerary')} // Navigate to Itinerary page on click
+          >
+      <img src={YoutubeImage} alt="YouTube Icon" className="button-icon" />
+    </button>
         </section>
 
         {/* 인기 여행 유튜버 코스 섹션 */}
@@ -206,7 +227,10 @@ function Home() {
             <button className="carousel-btn next-btn" onClick={nextYoutubeSlide}>{">"}</button>
           </div>
         </section>
+        
         </div>
+        
+        </section>
       </main>
     </div>
   );

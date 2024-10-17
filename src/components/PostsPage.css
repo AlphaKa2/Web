@@ -10,7 +10,11 @@
 }
 
 @media screen and (max-width: 1599px) {
+<<<<<<< HEAD
 	header {
+=======
+	Profile_Tags {
+>>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
 		display:none;
 	}
 	.posts-page{
@@ -70,4 +74,8 @@ section .wrap_editor{
 	outline: none;
 	width: 300px;
 	font-size: 16px;
+<<<<<<< HEAD
   }
+=======
+  }
+>>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db

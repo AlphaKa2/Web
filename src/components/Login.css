@@ -101,6 +101,14 @@ html, body {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .social-login-buttons button img {
+    width: 26px; /* 원하는 너비 */
+    height: 20px; /* 원하는 높이 */
+    margin-right: 2px; /* 텍스트와 이미지 간격 */
   }
   
   .social-login-buttons button {

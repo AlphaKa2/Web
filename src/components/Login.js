@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css"; // 스타일 파일
 
+import GoogleImage from "../assets/images/google.png";
+import KakaoImage from "../assets/images/kakao.jpg";
+import NaverImage from "../assets/images/naver.png";
+
 function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -54,15 +58,15 @@ function Login({ onLoginSuccess }) {
           <div className="or-text">Or</div>
           <div className="social-login-buttons">
             <button>
-              <img src="/assets/icons/google.png" alt="Google" />
+              <img src={GoogleImage} alt="Google" />
               Google
             </button>
             <button>
-              <img src="/assets/icons/kakao.png" alt="Kakao" />
+              <img src={KakaoImage} alt="Kakao" />
               Kakao
             </button>
             <button>
-              <img src="/assets/icons/naver.png" alt="Naver" />
+            <img src={NaverImage} alt="Naver" />
               Naver
             </button>
           </div>

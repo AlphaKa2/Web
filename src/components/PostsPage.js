@@ -2,12 +2,18 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Isotope from 'isotope-layout';
 import imagesLoaded from 'imagesloaded';
+<<<<<<< HEAD
 import Header from './ProfileTags';
 import Post from './EachPost';
 import './PostsPage.css';
 import './EachPost.css';
 import './ProfileTags.css'
 
+=======
+import Profile_Tags from './Profile_Tags';
+import Post from './EachPost';
+import './PostsPage.css';
+>>>>>>> b3117ad59ba673871b51b936681b8aee9f0d28db
 
 const PostsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -86,7 +92,7 @@ const PostsPage = () => {
 
   return (
     <div className="posts-page">
-      <Header onFilterChange={handleFilterChange} /> {/* handleFilterChange 전달 */}
+      <Profile_Tags onFilterChange={handleFilterChange} /> {/* handleFilterChange 전달 */}
       <div className="search-sort-container">
         <input
           type="text"
