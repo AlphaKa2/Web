@@ -1,6 +1,6 @@
 .posts-page {
-	width: 82%;
-	margin-left: 330px;
+	width: 80%;
+	margin-left: 380px;
 	box-sizing: border-box;
 	padding: 20px;
 	z-index: 5; /* Lower z-index compared to footer */
@@ -21,11 +21,6 @@
 	}
 }
 
-section .wrap_editor{
-	padding-left: 50px;
-	width: 95%;
-	height: 70%;
-}
 
 /* pagination */
   .pagination {
@@ -64,7 +59,7 @@ section .wrap_editor{
 	align-items: center;
 	padding: 20px;
 	gap: 10px; /* 검색창과 드롭다운 간격 */
-    margin-right: 70px;
+    margin-right: 160px;
   }
   
   .search-input {

@@ -22,6 +22,10 @@ import CreatePlan2 from "./components/CreatePlan2";
 import ItineraryPage from './components/ItineraryPage';
 import ProfilePage from "./components/ProfilePage";
 import MyTripList from "./components/MyTripList";
+import CreatePostPage from "./components/CreatePostPage";
+import EachPost from "./components/EachPost";
+import ProfileTags from "./components/ProfileTags";
+import PostDetailPage from "./components/PostDetailPage";
 import "./App.css";
 
 function PrivateRoute({ children }) {
@@ -86,6 +90,10 @@ function App() {
           <Route path="/balance-game" element={<BalanceGame />} />
           <Route path="/mbti-result" element={<MBTIResult />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/create-post" element={<PrivateRoute><CreatePostPage /></PrivateRoute>} />
+          <Route path="/each-post" element={<PrivateRoute><EachPost /></PrivateRoute>} />
+          <Route path="/profile-tags" element={<PrivateRoute><ProfileTags /></PrivateRoute>} />
+          <Route path="/posts/:postId" element={<PostDetailPage />} />
         </Routes>
       </Layout>
     </Router>

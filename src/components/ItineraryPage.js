@@ -1,7 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import React, { useState, useRef, useEffect } from 'react';
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 import './ItineraryPage.css';
-
 
 const ItineraryPage = () => {
   const [schedule, setSchedule] = useState([]);
@@ -10,8 +9,24 @@ const ItineraryPage = () => {
   const [newStartMinute, setNewStartMinute] = useState('00');
   const [newEndHour, setNewEndHour] = useState('00');
   const [newEndMinute, setNewEndMinute] = useState('00');
-  const [center, setCenter] = useState({ lat: 36, lng: 128 }); // Adjusted center to include both Koreas
-  const mapRef = useRef(null); // Reference for GoogleMap instance
+  const [center, setCenter] = useState({ lat: 36, lng: 128 }); // Set a default center
+  const mapRef = useRef(null); // Map instance reference
+  const isMapInitialized = useRef(false); // To track if the map is already initialized
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyD379m_qluKwVTRNMpf2yjywwGTGDsHgos',
+    version: '3.47', // Specify version to avoid unexpected issues
+  });
+   // Clean up the map instance when the component unmounts
+   useEffect(() => {
+    return () => {
+      if (mapRef.current) {
+        mapRef.current = null; // Clean up map reference
+        isMapInitialized.current = false; // Reset initialization state
+      }
+    };
+  }, []);
+
 
   const geocodeLocation = async (location) => {
     const geocoder = new window.google.maps.Geocoder();
@@ -31,32 +46,27 @@ const ItineraryPage = () => {
   const handleAddSchedule = async () => {
     if (newLocation) {
       try {
-        const coords = await geocodeLocation(newLocation); // Get coordinates for the location
+        const coords = await geocodeLocation(newLocation);
         const newScheduleItem = {
           startTime: `${newStartHour}:${newStartMinute}`,
           endTime: `${newEndHour}:${newEndMinute}`,
           location: newLocation,
-          lat: coords.lat, // Use fetched latitude
-          lng: coords.lng  // Use fetched longitude
+          lat: coords.lat,
+          lng: coords.lng
         };
         setSchedule([...schedule, newScheduleItem]);
 
-        // Pan to the newly added marker and zoom in
         if (mapRef.current) {
           mapRef.current.panTo({ lat: coords.lat, lng: coords.lng });
-          mapRef.current.setZoom(14); // Zoom into the location
+          mapRef.current.setZoom(14);
         }
 
-        // Update center state (in case map needs to rerender)
         setCenter({ lat: coords.lat, lng: coords.lng });
-
-        // Clear input fields
         setNewLocation('');
         setNewStartHour('00');
         setNewStartMinute('00');
         setNewEndHour('00');
         setNewEndMinute('00');
-
       } catch (error) {
         console.error('Error fetching location:', error);
         alert('Failed to get the location coordinates. Please try again.');
@@ -71,8 +81,13 @@ const ItineraryPage = () => {
     setSchedule(updatedSchedule);
   };
 
+
+  if (!isLoaded) {
+    return <div>Loading...</div>; // Show loading indicator until map is loaded
+  }
+
   const mapContainerStyle = {
-    width: '98%',
+    width: '99%',
     height: '100%'
   };
 
@@ -110,7 +125,6 @@ const ItineraryPage = () => {
                     </option>
                   ))}
                 </select>
-                :
                 <select value={newStartMinute} onChange={(e) => setNewStartMinute(e.target.value)}>
                   <option value="00">00</option>
                   <option value="30">30</option>
@@ -125,7 +139,6 @@ const ItineraryPage = () => {
                     </option>
                   ))}
                 </select>
-                :
                 <select value={newEndMinute} onChange={(e) => setNewEndMinute(e.target.value)}>
                   <option value="00">00</option>
                   <option value="30">30</option>
@@ -133,7 +146,6 @@ const ItineraryPage = () => {
               </div>
               <button className="add-btn" onClick={handleAddSchedule}>추가</button>
             </div>
-
           </div>
         </div>
         <div className="action-buttons">
@@ -143,12 +155,16 @@ const ItineraryPage = () => {
       </div>
 
       <div className="map-container">
-        <LoadScript googleMapsApiKey="AIzaSyD379m_qluKwVTRNMpf2yjywwGTGDsHgos">
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
-            center={center}  // Use dynamic center state (adjusted for both Koreas)
-            zoom={7.5}          // Adjusted zoom to show the entire peninsula and surrounding areas
-            onLoad={map => mapRef.current = map}  // Store the map instance reference
+            center={center}
+            zoom={7.5}
+            onLoad={map => {
+              if (!mapRef.current && !isMapInitialized.current) {
+                mapRef.current = map;
+                isMapInitialized.current = true;  // Prevent further reinitializations
+              }
+            }}
           >
             {schedule.map((location, index) => (
               <Marker
@@ -158,7 +174,6 @@ const ItineraryPage = () => {
               />
             ))}
           </GoogleMap>
-        </LoadScript>
       </div>
     </div>
   );

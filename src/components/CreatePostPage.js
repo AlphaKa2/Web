@@ -2,29 +2,41 @@
 import React, { useRef, useState } from 'react';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
-import Header from './ProfileTags';
+import ProfileTags from './ProfileTags';
 import './CreatePostPage.css';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePostPage = () => {
   const editorRef = useRef();
   const [title, setTitle] = useState('');
-  const [tags, setTags] = useState();
+  const [tags, setTags] = useState(''); // Initialize with an empty string
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate("/posts-page"); // Define the navigation logic here
+  };
 
   const handleSave = () => {
     const editorInstance = editorRef.current.getInstance();
     const content = editorInstance.getMarkdown();
+    
+    // Save logic can be added here (e.g., sending data to a server)
     console.log('Title:', title);
     console.log('Tags:', tags);
     console.log('Content:', content);
+    
+    // You can trigger navigation after saving if needed
+    // navigate('/some-other-page');
   };
 
   return (
     <div className="new-page-with-editor">
       <aside className="sidebar">
-        <Header buttonText="게시글 둘러보기" showTags={false} />
+        <ProfileTags buttonText="게시글 둘러보기" showTags={false} onButtonClick={handleNavigation} />
       </aside>
 
-      <main className="content">
+      <main className="input-content">
+        {/* Title Input */}
         <input
           type="text"
           className="title-input"
@@ -33,6 +45,7 @@ const CreatePostPage = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
 
+        {/* Tags Input */}
         <input
           type="text"
           className="tag-input"
@@ -40,7 +53,8 @@ const CreatePostPage = () => {
           value={tags}
           onChange={(e) => setTags(e.target.value)}
         />
-        
+
+        {/* Toast UI Editor */}
         <Editor
           ref={editorRef}
           initialValue="내용을 입력하세요."
@@ -49,6 +63,8 @@ const CreatePostPage = () => {
           initialEditType="markdown"
           useCommandShortcut={true}
         />
+
+        {/* Save Button */}
         <div className="editor-actions">
           <button className="save-btn" onClick={handleSave}>저장</button>
         </div>

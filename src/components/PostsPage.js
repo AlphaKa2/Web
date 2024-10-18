@@ -7,6 +7,7 @@ import Post from './EachPost';
 import './PostsPage.css';
 import './EachPost.css';
 import './ProfileTags.css'
+import { useNavigate } from 'react-router-dom'; 
 
 const PostsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,14 +16,25 @@ const PostsPage = () => {
   const postsPerPage = 3;
   const postsRef = useRef(null);
   const isotopeInstance = useRef(null);
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate("/create-post"); // Define the navigation logic here
+  };
+
+  const handlePostNavigation = () => {
+    // Navigate dynamically based on the postId or other parameters
+    navigate("/posts/${postId}");
+  };
+
 
   const posts = [
-    { id: 1, region: 'gyeonggi', title: 'Title 1', description: 'Content description 1', image: 'img/한강.jpg', tags: '#경기도 여행 #도시 #젊음' },
-    { id: 2, region: 'gangwon', title: 'Title 2', description: 'Content description 2', image: 'img/속초.jpeg', tags: '#강원도 여행 #속초' },
-    { id: 3, region: 'gyeonggi', title: 'Title 3', description: 'Content description 3', image: 'img/광교호수공원.jpg', tags: '#경기도 여행 #도시 #젊음' },
-    { id: 4, region: 'jeju', title: 'Title 4', description: 'Content description 4', image: 'img/성산일출봉.jpg', tags: '#제주도 여행 #성산일출봉' },
-    { id: 5, region: 'chungbuk', title: 'Title 5', description: 'Content description 5', image: 'img/단양팔경.jpg', tags: '#충청북도 여행 #단양' },
-    { id: 6, region: 'chungnam', title: 'Title 6', description: 'Content description 6', image: 'img/천안삼거리공원.jpg', tags: '#충청남도 여행 #천안' },
+    { id: 1, region: 'gyeonggi', title: 'Title 1', description: 'Content description 1', image: '../img/한강.jpg', tags: '#경기도 여행 #도시 #젊음' },
+    { id: 2, region: 'gangwon', title: 'Title 2', description: 'Content description 2', image: '../img/속초.jpeg', tags: '#강원도 여행 #속초' },
+    { id: 3, region: 'gyeonggi', title: 'Title 3', description: 'Content description 3', image: '../img/광교호수공원.jpg', tags: '#경기도 여행 #도시 #젊음' },
+    { id: 4, region: 'jeju', title: 'Title 4', description: 'Content description 4', image: '../img/성산일출봉.jpg', tags: '#제주도 여행 #성산일출봉' },
+    { id: 5, region: 'chungbuk', title: 'Title 5', description: 'Content description 5', image: '../img/단양팔경.jpg', tags: '#충청북도 여행 #단양' },
+    { id: 6, region: 'chungnam', title: 'Title 6', description: 'Content description 6', image: '../img/천안삼거리공원.jpg', tags: '#충청남도 여행 #천안' },
   ];
 
   // 필터링된 포스트 목록
@@ -85,7 +97,7 @@ const PostsPage = () => {
 
   return (
     <div className="posts-page">
-      <ProfileTags onFilterChange={handleFilterChange} /> {/* handleFilterChange 전달 */}
+      <ProfileTags onFilterChange={handleFilterChange} onButtonClick={handleNavigation} /> {/* handleFilterChange 전달 */}
       <div className="search-sort-container">
         <input
           type="text"
@@ -97,7 +109,7 @@ const PostsPage = () => {
       </div>
       <main className="posts" ref={postsRef}>
         {currentPosts.map(post => (
-          <Post key={post.id} region={post.region} title={post.title} description={post.description} image={post.image} tags={post.tags} />
+          <Post key={post.id} region={post.region} title={post.title} description={post.description} image={post.image} tags={post.tags} handlePostClick={handlePostNavigation} />
         ))}
       </main>
       <div className="pagination">

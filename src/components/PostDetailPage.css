@@ -1,0 +1,251 @@
+/* NewPage.css */
+div.new-page {
+  display: flex;
+  padding: 20px;
+}
+
+aside.sidebar {
+  width: 18%; 
+}
+
+div.content {
+  width: 50%;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 0 40px; 
+  box-sizing: border-box; 
+  text-align: left;
+}
+
+article.blog-post {
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  margin-top: 80px;
+  line-height: 30px;
+}
+
+button.category-btn {
+  background-color: #242a61; /* 파란색 배경 */
+  color: white; /* 텍스트 색상 */
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* .post-meta-info 스타일 수정 */
+div.post-meta-info {
+  display: flex;
+  justify-content: space-between; /* 좌우로 배치 */
+  align-items: center;
+  margin-top: 10px;
+}
+
+span.author-name {
+  color: grey;
+  font-size: 14px;
+  margin-top: 55px;
+}
+
+
+hr.divider {
+  border: 0;
+  height: 1px;
+  background-color: #ddd;
+  margin: 10px 0;
+}
+
+p.post-info{
+  margin-top: 30px;
+}
+
+
+
+img.post-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+section.related-posts {
+  margin-top: 40px;
+}
+
+section.related-posts h2 {
+  margin-bottom: 30px; /* 제목과 슬라이더 간의 간격 추가 */
+}
+
+.related-posts-slider {
+  position: relative;
+  margin-bottom: 80px;
+}
+
+div.related-post-item {
+  background: #ffffff;
+  border: 1px solid #ededed; /* 경계선 추가 */
+  box-shadow:  rgba(0, 0, 0, 0.1);
+  margin: 0px 10px; /* 좌우 간격 조정 */
+  text-align: center;
+  height: 200px; /* 박스 높이 설정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수직 가운데 정렬 */
+  align-items: center; /* 수평 가운데 정렬 */
+}
+
+div.related-post-item img {
+  width: auto; /* 비율에 맞게 자동으로 조절 */
+  max-width: 90%; /* 최대 너비 설정 */
+  max-height: 100px;
+  margin: 10px auto;
+  border-radius: 5px;
+  object-fit: contain; /* 이미지를 박스 내부에서 가운데 정렬 */
+}
+
+div.related-post-item p {
+  margin: 20px 0; /* 텍스트와 이미지 사이 간격 조정 */
+}
+
+
+.slick-prev {
+  position: absolute;
+  left: -40px;
+  top: 35%; /* 버튼을 더 위로 이동 */
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.slick-next {
+  position: absolute;
+  right: -40px;
+  top: 35%; /* 버튼을 더 위로 이동 */
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.slick-arrow {
+  background: transparent; /* 배경을 투명하게 설정 */
+  color: #808080; /* 기본 화살표 색상 (회색) */
+  border-radius: 50%;
+  width: 40px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px; /* 아이콘 크기 증가 */
+  font-weight: 900; /* 아이콘 더 굵게 설정 */
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+
+.slick-arrow:hover {
+  color: #000000; /* hover 시 화살표 색상 변경 */
+}
+
+/* 댓글 */
+
+div.comment-section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+div.comment-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+div.comment-user-info {
+  display: flex;
+  align-items: center;
+  color: #888;
+}
+
+span.comment-user-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+span.comment-username {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+span.comment-date {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 60px;
+}
+
+textarea.comment-textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+div.comment-actions {
+  margin-top: 10px;
+  text-align: right;
+}
+
+button.submit-btn {
+  background-color: #4f82e4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.submit-btn:hover {
+  background-color: #3b6ac8;
+}
+
+/* 좋아요 및 신고하기 섹션 */
+div.like-report-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+button.like-btn {
+  background-color: #1d2fd1;
+  border: none;
+  border-radius: 5px;
+  padding:7px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+button.report-btn {
+  background-color: #da1d1d;
+  border: none;
+  border-radius: 5px;
+  padding:7px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+p.post-date {
+  margin-left: auto;
+  font-size: 14px;
+  color: #888;
+  margin-top: 50px;
+}
