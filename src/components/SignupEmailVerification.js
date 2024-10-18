@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SignupEmailVerification.css"; // CSS 파일을 새로 생성
-import StepProgress from "./StepProgress"; // StepProgress 컴포넌트 불러오기
+import axios from "axios";
+import "./SignupEmailVerification.css";
+import StepProgress from "./StepProgress";
 
 function SignupEmailVerification() {
   const [name, setName] = useState("");
@@ -11,21 +12,44 @@ function SignupEmailVerification() {
   const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
 
-  const handleSendVerificationCode = () => {
+  const handleSendVerificationCode = async () => {
     if (phone) {
-      setCodeSent(true);
-      alert("인증 번호가 전송되었습니다.");
+      try {
+        const response = await axios.post("http://backend-server-url/auth-service/sms/authentication", {
+          phoneNumber: phone,
+        });
+        if (response.data.status === 200) {
+          setCodeSent(true);
+          alert("인증 번호가 전송되었습니다.");
+        }
+      } catch (error) {
+        console.error("SMS 인증번호 전송 오류:", error);
+        alert("인증 번호 전송에 실패했습니다. 다시 시도해 주세요.");
+      }
     } else {
       alert("전화번호를 입력하세요.");
     }
   };
 
-  const handleVerifyCode = () => {
-    if (code === "1234") {
-      alert("인증이 완료되었습니다.");
-      setIsVerified(true);
+  const handleVerifyCode = async () => {
+    if (code) {
+      try {
+        const response = await axios.post("http://backend-server-url/auth-service/sms/verification", {
+          phoneNumber: phone,
+          authenticationCode: code,
+        });
+        if (response.data.status === 202) {
+          alert("인증이 완료되었습니다.");
+          setIsVerified(true);
+        } else {
+          alert("인증 코드가 올바르지 않습니다.");
+        }
+      } catch (error) {
+        console.error("인증 코드 검증 오류:", error);
+        alert("인증 코드 확인에 실패했습니다. 다시 시도해 주세요.");
+      }
     } else {
-      alert("인증 코드가 올바르지 않습니다.");
+      alert("인증 코드를 입력하세요.");
     }
   };
 
@@ -51,11 +75,10 @@ function SignupEmailVerification() {
 
   return (
     <div className="signup-email-verification-container">
-      {/* Step Progress */}
       <StepProgress currentStep={2} />
 
       <div className="verification-form">
-        <div className="input-group name-group"> {/* 이름 인풋만 독립적 컨테이너 */}
+        <div className="input-group name-group">
           <input
             type="text"
             placeholder="이름"
