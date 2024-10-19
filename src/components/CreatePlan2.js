@@ -48,10 +48,10 @@ function CreatePlan2() {
         <h3>여행 동기</h3>
         <select value={season} onChange={(e) => setSeason(e.target.value)} className="dropdown2">
           <option value="" disabled></option>
-          <option value="ESCAPE">일상 탈출</option>
+          <option value="ESCAPE">일탈</option>
           <option value="REST">휴식</option>
-          <option value="COMPANION_BONDING">커플 여행</option>
-          <option value="SELF_REFLECTION">자기 반성</option>
+          <option value="COMPANION_BONDING">우정 여행</option>
+          <option value="SELF_REFLECTION">자아 성찰</option>
           <option value="SOCIAL_MEDIA">SNS 통해</option>
           <option value="EXERCISE">운동</option>
           <option value="NEW_EXPERIENCE">새로운 경험</option>
@@ -68,7 +68,7 @@ function CreatePlan2() {
           <option value="CITY_TOUR">시티 투어</option>
           <option value="OUTDOOR_SPORTS">야외 스포츠</option>
           <option value="CULTURAL_EVENT">문화 행사</option>
-          <option value="NIGHTLIFE">나이트라이프</option>
+          <option value="NIGHTLIFE">유흥/오락</option>
           <option value="CAMPING">캠핑</option>
           <option value="LOCAL_FESTIVAL">지역 축제</option>
           <option value="SPA">스파</option>
@@ -76,12 +76,12 @@ function CreatePlan2() {
           <option value="FILM_LOCATION">영화 촬영지</option>
           <option value="PILGRIMAGE">순례 여행</option>
           <option value="WELLNESS">웰니스</option>
-          <option value="SNS_SHOT">SNS 촬영지</option>
-          <option value="HOTEL_STAYCATION">호텔 스테이케이션</option>
+          <option value="SNS_SHOT">SNS 핫플</option>
+          <option value="HOTEL_STAYCATION">호캉스</option>
           <option value="NEW_TRAVEL_DESTINATION">새로운 여행지</option>
           <option value="PET_FRIENDLY">반려동물 친화</option>
           <option value="INFLUENCER_FOLLOW">인플루언서 따라잡기</option>
-          <option value="ECO_TRAVEL">에코 여행</option>
+          <option value="ECO_TRAVEL">친환경 여행</option>
           <option value="HIKING">하이킹</option>
         </select>
 
