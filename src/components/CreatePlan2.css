@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("C:/Users/upscm/frontend/Web-restore1/public/ocean.png");
+  background-image: url("../../public/ocean.png");
   background-size: cover;
   position: relative;
 }
