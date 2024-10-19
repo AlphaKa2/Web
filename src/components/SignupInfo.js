@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./SignupInfo.css";
-import StepProgress from "./StepProgress";
+import { useNavigate, useLocation } from "react-router-dom";  // useLocation 추가
+import axios from "../axios";  // axios 인스턴스 불러오기
 
 function SignupInfo() {
-  const navigate = useNavigate();
+  const location = useLocation();  // 회원가입1 페이지에서 전달된 데이터를 받기 위한 useLocation 사용
+  const { name, phone } = location.state || {};  // 회원가입1 페이지에서 전달된 이름과 전화번호 받기
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
@@ -13,8 +13,9 @@ function SignupInfo() {
   const [birthDate, setBirthDate] = useState("");
   const [gender, setGender] = useState("");
   const [isNicknameAvailable, setIsNicknameAvailable] = useState(null);
+  const navigate = useNavigate();
 
-  // 이메일과 비밀번호 확인을 위한 백엔드 API 요청
+  // 회원가입 완료 시, 백엔드로 모든 데이터 전송
   const handleSignupComplete = async () => {
     if (!email || !password || password !== passwordCheck || !nickname || !birthDate || !gender) {
       alert("모든 정보를 정확하게 입력해 주세요.");
@@ -22,12 +23,14 @@ function SignupInfo() {
     }
 
     try {
-      const response = await axios.post("http://backend-server-url/user-service/users/join", {
+      const response = await axios.post("/user-service/users/join", {
         email,
         password,
         nickname,
         birth: birthDate,
-        gender: gender.toUpperCase(), // 'male' 또는 'female'을 'MALE' 및 'FEMALE'로 변환
+        gender: gender.toUpperCase(),
+        name,  // 회원가입1 페이지에서 받은 이름
+        phoneNumber: phone  // 회원가입1 페이지에서 받은 전화번호
       });
 
       if (response.data.code === 201) {
@@ -45,7 +48,7 @@ function SignupInfo() {
   // 닉네임 중복 확인
   const checkNicknameAvailability = async () => {
     try {
-      const response = await axios.get(`http://backend-server-url/user-service/users/${nickname}/exist`);
+      const response = await axios.get(`/user-service/users/${nickname}/exist`);
       setIsNicknameAvailable(!response.data.data);
       if (response.data.data) {
         alert("이미 사용 중인 닉네임입니다.");
@@ -67,13 +70,12 @@ function SignupInfo() {
   };
 
   const handleCancelSignup = () => {
-    navigate("/login");
+    navigate("/login");  // 회원가입 취소 시 로그인 페이지로 이동
   };
 
   return (
     <div className="signup-info-container">
-      <StepProgress currentStep={3} />
-
+      <h1>회원가입2 - 나머지 정보 입력</h1>
       <form className="signup-form">
         <div className="input-group">
           <input

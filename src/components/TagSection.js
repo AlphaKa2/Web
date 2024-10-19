@@ -45,7 +45,7 @@ function TagSection() {
 
   return (
     <section className="tag-section">
-      <h1>태그 선택하기</h1>
+      
       <div className="tags-carousel">
         {slides[currentSlide].map((tag, index) => (
           <div key={index} className="tag-item">

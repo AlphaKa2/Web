@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../axios"; // 공통 axios 인스턴스 불러오기
 import "./SignupEmailVerification.css";
 import StepProgress from "./StepProgress";
 
@@ -12,13 +12,15 @@ function SignupEmailVerification() {
   const [isVerified, setIsVerified] = useState(false);
   const navigate = useNavigate();
 
+  // SMS 인증번호 전송 - 이름과 전화번호 함께 전송
   const handleSendVerificationCode = async () => {
-    if (phone) {
+    if (name && phone) {  // 이름과 전화번호 모두 입력되어야 함
       try {
-        const response = await axios.post("http://backend-server-url/auth-service/sms/authentication", {
+        const response = await axios.post("/auth-service/sms/authentication", {
+          name: name,  // 이름도 함께 전송
           phoneNumber: phone,
         });
-        if (response.data.status === 200) {
+        if (response.status === 200) {
           setCodeSent(true);
           alert("인증 번호가 전송되었습니다.");
         }
@@ -27,18 +29,19 @@ function SignupEmailVerification() {
         alert("인증 번호 전송에 실패했습니다. 다시 시도해 주세요.");
       }
     } else {
-      alert("전화번호를 입력하세요.");
+      alert("이름과 전화번호를 모두 입력하세요.");
     }
   };
 
+  // SMS 인증 코드 검증
   const handleVerifyCode = async () => {
     if (code) {
       try {
-        const response = await axios.post("http://backend-server-url/auth-service/sms/verification", {
+        const response = await axios.post("/auth-service/sms/verification", {
           phoneNumber: phone,
           authenticationCode: code,
         });
-        if (response.data.status === 202) {
+        if (response.status === 202) {
           alert("인증이 완료되었습니다.");
           setIsVerified(true);
         } else {
@@ -53,6 +56,7 @@ function SignupEmailVerification() {
     }
   };
 
+  // 회원가입 진행 버튼 - 이름과 전화번호를 회원가입2 페이지로 전달
   const handleContinue = () => {
     if (!name) {
       alert("이름을 입력하세요.");
@@ -66,11 +70,13 @@ function SignupEmailVerification() {
       alert("전화번호 인증을 완료해 주세요.");
       return;
     }
-    navigate("/signup-info");
+    // navigate를 통해 이름과 전화번호를 회원가입2 페이지로 전달
+    navigate("/signup-info", { state: { name, phone } });
   };
 
+  // 회원가입 취소 버튼
   const handleCancel = () => {
-    navigate("/login");
+    navigate("/login"); // 회원가입 취소 시 로그인 페이지로 이동
   };
 
   return (

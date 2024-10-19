@@ -1,17 +1,41 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import './ItineraryPage.css';
+import axios from 'axios';
 
 const ItineraryPage = () => {
-  const [schedule, setSchedule] = useState([]);
-  const [newLocation, setNewLocation] = useState('');
+  const [schedule, setSchedule] = useState([]);  // 일정 저장 배열
+  const [newLocation, setNewLocation] = useState('');  // 새로운 장소 입력 필드
   const [newStartHour, setNewStartHour] = useState('00');
   const [newStartMinute, setNewStartMinute] = useState('00');
   const [newEndHour, setNewEndHour] = useState('00');
   const [newEndMinute, setNewEndMinute] = useState('00');
-  const [center, setCenter] = useState({ lat: 36, lng: 128 }); // Adjusted center to include both Koreas
-  const mapRef = useRef(null); // Reference for GoogleMap instance
+  const [center, setCenter] = useState({ lat: 36, lng: 128 });  // 지도의 초기 중심 좌표
+  const mapRef = useRef(null);  // 구글맵 인스턴스 참조
 
+  // AI로부터 받은 장소 추천 데이터를 불러오는 함수
+  useEffect(() => {
+    const fetchAIRecommendation = async () => {
+      try {
+        const response = await axios.get('http://backend-url/recommendation-data');  // API 호출
+        const aiData = response.data.days.map(day => 
+          day.schedule.map(location => ({
+            location: location.place,
+            lat: parseFloat(location.latitude),
+            lng: parseFloat(location.longitude)
+          }))
+        ).flat();  // 데이터를 평탄화(flatten)하여 일정에 추가
+
+        setSchedule(aiData);  // 추천된 장소를 일정에 설정
+      } catch (error) {
+        console.error('Error fetching AI recommendations:', error);
+      }
+    };
+
+    fetchAIRecommendation();  // AI 추천 일정 가져오기
+  }, []);
+
+  // 지오코딩: 입력한 장소를 좌표로 변환하는 함수
   const geocodeLocation = async (location) => {
     const geocoder = new window.google.maps.Geocoder();
     return new Promise((resolve, reject) => {
@@ -27,29 +51,27 @@ const ItineraryPage = () => {
     });
   };
 
+  // 새로운 장소를 일정에 추가하는 함수
   const handleAddSchedule = async () => {
     if (newLocation) {
       try {
-        const coords = await geocodeLocation(newLocation); // Get coordinates for the location
+        const coords = await geocodeLocation(newLocation);  // 장소 좌표 가져오기
         const newScheduleItem = {
           startTime: `${newStartHour}:${newStartMinute}`,
           endTime: `${newEndHour}:${newEndMinute}`,
           location: newLocation,
-          lat: coords.lat, // Use fetched latitude
-          lng: coords.lng  // Use fetched longitude
+          lat: coords.lat,  // 변환된 좌표
+          lng: coords.lng
         };
-        setSchedule([...schedule, newScheduleItem]);
+        setSchedule([...schedule, newScheduleItem]);  // 기존 일정에 새로운 장소 추가
 
-        // Pan to the newly added marker and zoom in
+        // 추가된 위치로 지도 이동 및 확대
         if (mapRef.current) {
           mapRef.current.panTo({ lat: coords.lat, lng: coords.lng });
-          mapRef.current.setZoom(14); // Zoom into the location
+          mapRef.current.setZoom(14);  // 확대
         }
 
-        // Update center state (in case map needs to rerender)
-        setCenter({ lat: coords.lat, lng: coords.lng });
-
-        // Clear input fields
+        // 상태 초기화
         setNewLocation('');
         setNewStartHour('00');
         setNewStartMinute('00');
@@ -65,9 +87,10 @@ const ItineraryPage = () => {
     }
   };
 
+  // 일정에서 특정 장소를 삭제하는 함수
   const handleDelete = (index) => {
-    const updatedSchedule = schedule.filter((_, i) => i !== index);
-    setSchedule(updatedSchedule);
+    const updatedSchedule = schedule.filter((_, i) => i !== index);  // 선택한 장소 제거
+    setSchedule(updatedSchedule);  // 제거 후 일정 업데이트
   };
 
   const mapContainerStyle = {
@@ -144,15 +167,15 @@ const ItineraryPage = () => {
         <LoadScript googleMapsApiKey="AIzaSyD379m_qluKwVTRNMpf2yjywwGTGDsHgos">
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
-            center={center}  // Use dynamic center state (adjusted for both Koreas)
-            zoom={7.5}          // Adjusted zoom to show the entire peninsula and surrounding areas
-            onLoad={map => mapRef.current = map}  // Store the map instance reference
+            center={center}  // 현재 지도 중심 좌표
+            zoom={7.5}        // 줌 레벨 설정
+            onLoad={map => mapRef.current = map}  // 지도 인스턴스 참조 저장
           >
             {schedule.map((location, index) => (
               <Marker
                 key={index}
-                position={{ lat: location.lat, lng: location.lng }}
-                label={location.location}
+                position={{ lat: location.lat, lng: location.lng }}  // 장소의 좌표
+                label={location.location}  // 장소 이름
               />
             ))}
           </GoogleMap>
