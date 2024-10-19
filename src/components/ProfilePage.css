@@ -58,7 +58,7 @@
   }
   
   .mbti-section1 h3 {
-    margin-top: 20px;
+    margin-top: 100px;
   }
   
   .btn-retest1 {
@@ -167,6 +167,7 @@
   }
   
   .travel-card-container1 {
+    /* margin-left: 150px; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
@@ -249,15 +250,30 @@
   .btn-edit1 {
     background-color: #007bff;
     color: white;
-    padding: 5px 10px;
+    padding: 5px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 1000px;
   }
   
   /* 프로필 정보 섹션 위치 조정 */
   .profile-info-section1 {
     flex-grow: 1;
     margin-top: 50px;
+  }
+  
+  .load-more1 {
+    grid-column: span 3;
+    /* margin: 0px auto; */
+    margin-top: 100px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+
   }
   
