@@ -1,32 +1,47 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "../axios"; // axios 파일 경로에 맞게 설정
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom"; // useLocation 추가
+import axios from "../axios";
 import "./SignupInfo.css";
 import StepProgress from "./StepProgress";
 
 function SignupInfo() {
   const navigate = useNavigate();
+  const location = useLocation(); // useLocation으로 이전 페이지의 데이터를 가져옴
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [nickname, setNickname] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [gender, setGender] = useState("");
-  const [isNicknameAvailable, setIsNicknameAvailable] = useState(false); // 닉네임 중복 체크 여부
-  const [isEmailAvailable, setIsEmailAvailable] = useState(null); // 이메일 중복 확인 상태 추가
+  const [isNicknameAvailable, setIsNicknameAvailable] = useState(false);
+  const [isEmailAvailable, setIsEmailAvailable] = useState(null);
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhone] = useState("");
+
+  // useEffect를 사용해 location.state에서 넘어온 값(name과 phone)을 상태에 저장
+  useEffect(() => {
+    if (location.state) {
+      setName(location.state.name);
+      setPhone(location.state.phoneNumber);
+    }
+  }, [location.state]);
 
   // 이메일 중복 확인 로직
   const checkEmailAvailability = async () => {
     try {
-      const response = await axios.get(`/user-service/users/email-check?email=${email}`);
-      setIsEmailAvailable(response.data.data); // 백엔드에서 이메일 중복 여부 확인
+      const response = await axios.get(`/user-service/users/email/${email}/exist`);
+      setIsEmailAvailable(response.data.data);
       if (response.data.data) {
         alert("사용 가능한 이메일입니다.");
-      } else {
-        alert("이미 사용 중인 이메일입니다.");
       }
     } catch (error) {
-      console.error("이메일 중복 확인 오류:", error);
+      console.log(error);
+      if (error.response.status === 409) {
+        setIsNicknameAvailable(false);
+        alert("이미 사용 중인 이메일입니다.");
+        return;
+      }
+      console.error("서버 오류", error);
       alert("이메일 중복 확인 중 오류가 발생했습니다.");
     }
   };
@@ -34,31 +49,38 @@ function SignupInfo() {
   // 닉네임 중복 확인 로직
   const checkNicknameAvailability = async () => {
     try {
-      const response = await axios.get(`/user-service/users/${nickname}/exist`);
-      if (response.status === 200) {
-        setIsNicknameAvailable(true); // 중복되지 않으면 true
+      const response = await axios.get(`/user-service/users/nickname/${nickname}/exist`);
+      if (response.data.data === true) {
+        setIsNicknameAvailable(true);
         alert("사용 가능한 닉네임입니다.");
       }
     } catch (error) {
-      if (error.response && error.response.status === 409) {
-        setIsNicknameAvailable(false); // 중복된 닉네임일 경우 false
+      if (error.response.status === 409) {
+        setIsNicknameAvailable(false);
         alert("이미 사용 중인 닉네임입니다.");
-      } else {
-        console.error("닉네임 중복 확인 오류:", error);
-        alert("닉네임 확인 중 오류가 발생했습니다.");
+        return;
       }
+      console.error(" 서버 오류:", error);
+      alert("닉네임 확인 중 오류가 발생했습니다.");
     }
   };
 
   // 회원가입 완료 버튼 클릭 시 로직
   const handleSignupComplete = async () => {
-    // 모든 입력값이 확인되었는지, 비밀번호가 일치하는지, 그리고 닉네임 중복 체크가 되었는지 확인
-    if (!email || !password || password !== passwordCheck || !nickname || !birthDate || !gender) {
+    if (!email || !password || password !== passwordCheck || !nickname || !birthDate || !gender || !phoneNumber) {
+      console.log("입력 값 확인:");
+      console.log("이메일:", email);
+      console.log("비밀번호:", password);
+      console.log("비밀번호 확인:", passwordCheck);
+      console.log("닉네임:", nickname);
+      console.log("생년월일:", birthDate);
+      console.log("성별:", gender);
+      console.log("전화번호:", phoneNumber);
+      
       alert("모든 정보를 정확하게 입력해 주세요.");
       return;
     }
 
-    // 닉네임 중복 체크가 완료되지 않았거나 중복일 경우
     if (!isNicknameAvailable) {
       alert("닉네임 중복 체크를 완료해 주세요.");
       return;
@@ -69,8 +91,10 @@ function SignupInfo() {
         email,
         password,
         nickname,
+        name,
+        phoneNumber,
         birth: birthDate,
-        gender: gender.toUpperCase(), // 'male' 또는 'female'을 'MALE' 및 'FEMALE'로 변환
+        gender: gender.toUpperCase(),
       });
 
       if (response.data.code === 201) {
@@ -87,7 +111,7 @@ function SignupInfo() {
 
   // 생년월일 형식 변경 로직
   const handleBirthDateChange = (e) => {
-    let value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 허용
+    let value = e.target.value.replace(/[^0-9]/g, "");
     if (value.length >= 4) value = value.slice(0, 4) + "-" + value.slice(4);
     if (value.length >= 7) value = value.slice(0, 7) + "-" + value.slice(7, 10);
     setBirthDate(value);
@@ -100,7 +124,6 @@ function SignupInfo() {
   return (
     <div className="signup-info-container">
       <StepProgress currentStep={3} />
-
       <form className="signup-form">
         <div className="input-group">
           <input
@@ -110,10 +133,12 @@ function SignupInfo() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button type="button" onClick={checkEmailAvailability}>이메일 중복 확인</button>
+          <button type="button" onClick={checkEmailAvailability}>
+            이메일 중복 확인
+          </button>
           {isEmailAvailable === false && <span className="error">이미 사용 중인 이메일입니다.</span>}
         </div>
-        
+
         <div className="input-group">
           <input
             type="text"
@@ -122,9 +147,11 @@ function SignupInfo() {
             onChange={(e) => setNickname(e.target.value)}
             required
           />
-          <button type="button" onClick={checkNicknameAvailability}>닉네임 중복 확인</button>
+          <button type="button" onClick={checkNicknameAvailability}>
+            닉네임 중복 확인
+          </button>
         </div>
-        
+
         <div className="input-group">
           <input
             type="password"
@@ -144,7 +171,7 @@ function SignupInfo() {
             required
           />
         </div>
-        
+
         <div className="input-group">
           <input
             type="text"

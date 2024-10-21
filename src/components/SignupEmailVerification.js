@@ -6,7 +6,7 @@ import StepProgress from "./StepProgress";
 
 function SignupEmailVerification() {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phoneNumber, setPhone] = useState("");
   const [code, setCode] = useState("");
   const [codeSent, setCodeSent] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
@@ -14,11 +14,11 @@ function SignupEmailVerification() {
 
   // SMS 인증번호 전송 - 이름과 전화번호 함께 전송
   const handleSendVerificationCode = async () => {
-    if (name && phone) {  // 이름과 전화번호 모두 입력되어야 함
+    if (name && phoneNumber) {  // 이름과 전화번호 모두 입력되어야 함
       try {
         const response = await axios.post("/auth-service/sms/authentication", {
           name: name,  // 이름도 함께 전송
-          phoneNumber: phone,
+          phoneNumber: phoneNumber,
         });
         if (response.status === 200) {
           setCodeSent(true);
@@ -38,10 +38,10 @@ function SignupEmailVerification() {
     if (code) {
       try {
         const response = await axios.post("/auth-service/sms/verification", {
-          phoneNumber: phone,
+          phoneNumber: phoneNumber,
           authenticationCode: code,
         });
-        if (response.status === 202) {
+        if (response.data.status === 202) {
           alert("인증이 완료되었습니다.");
           setIsVerified(true);
         } else {
@@ -62,7 +62,7 @@ function SignupEmailVerification() {
       alert("이름을 입력하세요.");
       return;
     }
-    if (!phone) {
+    if (!phoneNumber) {
       alert("전화번호를 입력하세요.");
       return;
     }
@@ -71,7 +71,7 @@ function SignupEmailVerification() {
       return;
     }
     // navigate를 통해 이름과 전화번호를 회원가입2 페이지로 전달
-    navigate("/signup-info", { state: { name, phone } });
+    navigate("/signup-info", { state: { name, phoneNumber } });
   };
 
   // 회원가입 취소 버튼
@@ -98,7 +98,7 @@ function SignupEmailVerification() {
           <input
             type="text"
             placeholder="전화번호"
-            value={phone}
+            value={phoneNumber}
             onChange={(e) => setPhone(e.target.value)}
             required
           />

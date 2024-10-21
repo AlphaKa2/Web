@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "r
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Signup from "./components/Signup"; // <- 여기에 추가
 import SignupTerms from "./components/SignupTerms";
 import SignupEmailVerification from "./components/SignupEmailVerification";
 import SignupInfo from "./components/SignupInfo";
@@ -71,7 +70,7 @@ function App() {
           <Route path="/signup-terms" element={<SignupTerms />} />
           <Route path="/signup-email" element={<SignupEmailVerification />} />
           <Route path="/signup-info" element={<SignupInfo />} />
-          <Route path="/signup" element={<Signup />} />
+        
           <Route path="/password-reset" element={<PasswordReset />} />
           <Route path="/profile-page" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
           <Route path="/travel-plan" element={<PrivateRoute><TravelPlan /></PrivateRoute>} />
