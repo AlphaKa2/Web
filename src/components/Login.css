@@ -17,7 +17,7 @@ html, body {
   /* 좌측 이미지 섹션 */
   .login-image-section {
     flex: 1;
-    background-image: url('../assets/images/Login.jpg'); /* 절대 경로로 public 폴더에 저장된 이미지 참조 */
+    background-image: url('https://alphaka-storage.s3.amazonaws.com/resource/28bf73e9-9119-45aa-a34e-62055c44f908.jpeg');
     background-size: cover;
     background-position: center;
     height: 89vh; /* 화면 전체 높이를 채움 */

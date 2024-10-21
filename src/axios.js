@@ -19,4 +19,26 @@ instance.interceptors.response.use(
   }
 );
 
+
+instance.interceptors.request.use(
+  function (config) {
+    // 로컬 스토리지에서 accessToken 가져오기
+    const accessToken = localStorage.getItem('accessToken');
+    console.log(accessToken);
+    
+    
+    // accessToken이 존재하면 Authorization 헤더에 추가
+    if (accessToken) {
+      config.headers['Authorization'] = `Bearer ${accessToken}`;
+    }
+    
+    // 변경된 config 반환
+    return config;
+  },
+  function (error) {
+    // 요청 오류가 있는 경우 처리
+    return Promise.reject(error);
+  }
+);
+
 export default instance;
