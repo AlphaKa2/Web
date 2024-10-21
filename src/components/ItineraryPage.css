@@ -6,7 +6,7 @@
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 	overflow-y: auto;
 	/* Remove the margin for better alignment */
-	margin: 0;
+	margin-top: -20px;
 }
   
 .travel-info {
@@ -168,6 +168,7 @@
 }
 
 .schedule-and-map{
+	margin-top: -20px;
 	display: flex;
 }
 

@@ -74,13 +74,18 @@ const PostsPage = () => {
         isotopeInstance.current = new Isotope(postsRef.current, {
           itemSelector: '.post-item',
           layoutMode: 'fitRows',
+          percentPosition: true,
           transitionDuration: '0.5s',
         });
-  
-        // 초기 필터 적용
-        isotopeInstance.current.arrange({ filter });
-      });
-    }
+         // 초기 필터 적용
+      isotopeInstance.current.arrange({ filter });
+
+      // 이미지가 로드된 후에 레이아웃 재정리
+      setTimeout(() => {
+        isotopeInstance.current.layout();
+      }, 100);  // 짧은 대기 후 레이아웃 재정리
+    });
+  }
   
     // 필터가 변경될 때마다 Isotope 필터링 적용
     if (isotopeInstance.current) {

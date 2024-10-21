@@ -7,6 +7,11 @@
 	position: relative; /* Ensure it stays below the footer */
 }
 
+.post-item {
+	margin-bottom: 20px; /* 하단에 일정한 간격 추가 */
+	transition: all 0.5s ease; /* 부드러운 전환 효과 추가 */
+  }
+
 .posts{
 	width: 100%;
 }

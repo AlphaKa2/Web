@@ -37,7 +37,7 @@ EachPost.propTypes = {
   content: PropTypes.string,
   image: PropTypes.string,
   tags: PropTypes.string,
-  // postId: PropTypes.number,
+  postId: PropTypes.number,
   handlePostClick: PropTypes.func // handlePostClick의 propTypes 추가
 };
 
