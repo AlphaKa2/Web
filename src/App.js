@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "r
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Signup from "./components/Signup"; // <- 여기에 추가
+import Signup from "./components/Signup";
 import SignupTerms from "./components/SignupTerms";
 import SignupEmailVerification from "./components/SignupEmailVerification";
 import SignupInfo from "./components/SignupInfo";
@@ -26,12 +26,17 @@ import CreatePostPage from "./components/CreatePostPage";
 import EachPost from "./components/EachPost";
 import ProfileTags from "./components/ProfileTags";
 import PostDetailPage from "./components/PostDetailPage";
+import PropTypes from 'prop-types'; 
 import "./App.css";
 
 function PrivateRoute({ children }) {
   const user = localStorage.getItem("user");
   return user ? children : <Navigate to="/login" />;
 }
+
+PrivateRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 function Layout({ isLoggedIn, onLogout, children }) {
   const location = useLocation();
@@ -51,6 +56,12 @@ function Layout({ isLoggedIn, onLogout, children }) {
     </div>
   );
 }
+
+Layout.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -77,11 +88,11 @@ function App() {
           <Route path="/signup-info" element={<SignupInfo />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/password-reset" element={<PasswordReset />} />
-          <Route path="/profile-page" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
+          <Route path="/profile-page" element={<ProfilePage />} />
           <Route path="/travel-plan" element={<PrivateRoute><TravelPlan /></PrivateRoute>} />
           <Route path="/mbti-travel" element={<PrivateRoute><MBTITravel /></PrivateRoute>} />
           <Route path="/blog-posts" element={<PrivateRoute><BlogPosts /></PrivateRoute>} />
-          <Route path="/posts-page" element={<PrivateRoute><PostsPage /></PrivateRoute>} />
+          <Route path="/posts-page" element={<PostsPage />} />
           <Route path="/create-plan" element={<CreatePlan />} />
           <Route path="/create-plan2" element={<CreatePlan2 />} />
           <Route path="/itinerary" element={<ItineraryPage />} />
