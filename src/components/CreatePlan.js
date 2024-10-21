@@ -46,18 +46,6 @@ function CreatePlan() {
 
   const navigate = useNavigate();
 
-  // 성별과 나이를 sessionStorage에서 불러오기
-  useEffect(() => {
-    const savedGender = sessionStorage.getItem('gender');
-    const savedAge = sessionStorage.getItem('age');
-
-    if (!savedGender || !savedAge) {
-      alert('회원가입 시 입력된 성별과 나이를 찾을 수 없습니다. 다시 로그인해주세요.');
-      navigate('/login'); // 성별과 나이가 없을 경우 로그인 페이지로 이동
-    } else {
-      console.log(`Gender: ${savedGender}, Age: ${savedAge}`);
-    }
-  }, [navigate]);
 
   const handleNext = () => {
     // 입력 데이터를 세션에 저장
