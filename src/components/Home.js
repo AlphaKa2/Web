@@ -6,8 +6,8 @@ import React, { useState, useRef } from "react";
 
 import JejuImage from '../assets/images/Jeju.jpeg';
 import UlsanImage from '../assets/images/ulsan.jpg';
-import TestImage from '../assets/images/Main Img.png';
-import AuthorImage from '../assets/images/사진.jpg'; // 임시로 프로필 사진 경로 설정
+import TestImage from '../assets/images/mdv.jpg';
+import AuthorImage from '../assets/images/default.png'; // 임시로 프로필 사진 경로 설정
 import PAImage from '../assets/images/Pani_Aus.jpg';
 import YoutubeImage from '../assets/images/youtubeB.png';
 

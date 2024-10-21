@@ -82,9 +82,9 @@ function App() {
           <Route path="/mbti-travel" element={<PrivateRoute><MBTITravel /></PrivateRoute>} />
           <Route path="/blog-posts" element={<PrivateRoute><BlogPosts /></PrivateRoute>} />
           <Route path="/posts-page" element={<PrivateRoute><PostsPage /></PrivateRoute>} />
-          <Route path="/create-plan" element={<PrivateRoute><CreatePlan /></PrivateRoute>} />
-          <Route path="/create-plan2" element={<PrivateRoute><CreatePlan2 /></PrivateRoute>} />
-          <Route path="/itinerary" element={<PrivateRoute><ItineraryPage /></PrivateRoute>} />
+          <Route path="/create-plan" element={<CreatePlan />} />
+          <Route path="/create-plan2" element={<CreatePlan2 />} />
+          <Route path="/itinerary" element={<ItineraryPage />} />
           <Route path="/my-trip-list" element={<PrivateRoute><MyTripList /></PrivateRoute>} />
           <Route path="/misc" element={<Misc />} />
           <Route path="/balance-game" element={<BalanceGame />} />

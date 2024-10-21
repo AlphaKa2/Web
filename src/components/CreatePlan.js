@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CreatePlan.css';
-import { FaMapMarkerAlt, FaCalendarAlt, FaMoneyBillWave, FaChevronDown } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaCalendarAlt, FaUserFriends, FaChevronDown } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +25,6 @@ const regions = {
   "경상남도": ["창원시", "진주시", "통영시", "사천시", "김해시", "밀양시", "거제시", "양산시", "의령군", "함안군", "창녕군", "고성군", "남해군", "하동군", "산청군", "함양군", "거창군", "합천군"]
 };
 
-// 동행 상태 목록
 const companionshipOptions = [
   '3인 이상 여행(가족 외)',
   '자녀 동반 여행',
@@ -47,9 +46,17 @@ function CreatePlan() {
 
   const navigate = useNavigate();
 
-  const handleRecommendation = () => {
-    console.log(`장소: ${location} ${subLocation}, 날짜: ${startDate} ~ ${endDate}, 동행 상태: ${companionship}`);
-    navigate('/itinerary');
+
+  const handleNext = () => {
+    // 입력 데이터를 세션에 저장
+    sessionStorage.setItem("location", location);
+    sessionStorage.setItem("subLocation", subLocation);
+    sessionStorage.setItem("startDate", startDate);
+    sessionStorage.setItem("endDate", endDate);
+    sessionStorage.setItem("companionship", companionship);
+
+    // 페이지 이동
+    navigate('/create-plan2');
   };
 
   const toggleLocationDropdown = () => {
@@ -155,7 +162,7 @@ function CreatePlan() {
             <div className="form-group1">
               <label htmlFor="companionship">동행 상태</label>
               <div className="input-container1">
-                <FaMoneyBillWave className="input-icon1" />
+                <FaUserFriends className="input-icon1" />
                 <input
                   type="text"
                   id="companionship"
@@ -182,7 +189,9 @@ function CreatePlan() {
           </div>
 
           <div className="button-container1">
-          <button className="recommend-button1" onClick={() => navigate("/create-plan2")}>다음</button>
+            <button className="recommend-button1" onClick={handleNext}>
+              다음
+            </button>
           </div>
         </div>
       </div>
