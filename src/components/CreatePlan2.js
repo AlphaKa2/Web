@@ -29,7 +29,6 @@ function CreatePlan2() {
 
   const handleSubmit = async () => {
     const travelDays = calculateTravelDays(startDate, endDate);
-    const ageGroup = calculateAgeGroup(age);
 
     const requestData = {
       TRAVEL_PURPOSE: purpose, // 여행 목적
