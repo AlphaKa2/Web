@@ -8,10 +8,10 @@ const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [userInfo, setUserInfo] = useState({
     name: '홍길동',
-    email: 'honggildong@example.com',
-    phone: '010-1234-5678',
-    birthDate: '1990-01-01',
     introduction: '안녕하세요! 저는 여행을 사랑하는 탐험가입니다.',
+    email: 'honggildong@example.com', // 초기 회원가입 정보
+    phone: '010-1234-5678', // 초기 회원가입 정보
+    birthDate: '1990-01-01', // 초기 회원가입 정보
   });
 
   const [travelPlans, setTravelPlans] = useState([
@@ -98,37 +98,12 @@ const ProfilePage = () => {
 
         {/* 오른쪽 정보 수정 및 여행 계획 섹션 */}
         <main className="profile-info-section1">
-          <h2>내 정보</h2>
           <div className="info-field1">
             <FaUser />
             {isEditing ? (
               <input type="text" name="name" value={userInfo.name} onChange={handleChange} />
             ) : (
               <span>{userInfo.name}</span>
-            )}
-          </div>
-          <div className="info-field1">
-            <FaEnvelope />
-            {isEditing ? (
-              <input type="email" name="email" value={userInfo.email} onChange={handleChange} />
-            ) : (
-              <span>{userInfo.email}</span>
-            )}
-          </div>
-          <div className="info-field1">
-            <FaPhone />
-            {isEditing ? (
-              <input type="tel" name="phone" value={userInfo.phone} onChange={handleChange} />
-            ) : (
-              <span>{userInfo.phone}</span>
-            )}
-          </div>
-          <div className="info-field1">
-            <FaBirthdayCake />
-            {isEditing ? (
-              <input type="date" name="birthDate" value={userInfo.birthDate} onChange={handleChange} />
-            ) : (
-              <span>{userInfo.birthDate}</span>
             )}
           </div>
           <div className="info-field1">
@@ -147,6 +122,18 @@ const ProfilePage = () => {
           <button className="btn-edit1" onClick={handleEditClick}>
             {isEditing ? '저장' : '내 정보 수정'}
           </button>
+          <div className="info-field1">
+            <FaEnvelope />
+            <span>{userInfo.email}</span> {/* 수정 불가능 */}
+          </div>
+          <div className="info-field1">
+            <FaPhone />
+            <span>{userInfo.phone}</span> {/* 수정 불가능 */}
+          </div>
+          <div className="info-field1">
+            <FaBirthdayCake />
+            <span>{userInfo.birthDate}</span> {/* 수정 불가능 */}
+          </div>
 
           {/* 여행 계획 목록 추가 */}
           <section className="travel-plans1">
@@ -155,6 +142,7 @@ const ProfilePage = () => {
               {travelPlans.map((plan, index) => (
                 <Card key={index} plan={plan} />
               ))}
+              <button className="load-more1">더보기</button>
             </div>
           </section>
         </main>
