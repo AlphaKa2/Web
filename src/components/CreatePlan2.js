@@ -17,20 +17,6 @@ function CreatePlan2() {
   // 여행 스타일 리스트
   const styleMapping = ["매우 자연 선호", "자연 선호", "중립", "도시 선호", "매우 도시 선호"];
 
-  // sessionStorage에서 저장된 성별과 나이 불러오기
-  const gender = sessionStorage.getItem('gender');
-  const age = parseInt(sessionStorage.getItem('age'), 10);
-
-  // 나이로 연령대 계산
-  const calculateAgeGroup = (age) => {
-    if (age >= 10 && age < 20) return 'TEENS';
-    if (age >= 20 && age < 30) return '20S';
-    if (age >= 30 && age < 40) return '30S';
-    if (age >= 40 && age < 50) return '40S';
-    if (age >= 50 && age < 60) return '50S';
-    if (age >= 60 && age < 70) return '60S';
-    return '70S+'; // 50대 이상
-  };
 
   // 여행 기간 계산
   const calculateTravelDays = (startDate, endDate) => {
@@ -48,8 +34,6 @@ function CreatePlan2() {
     const requestData = {
       TRAVEL_PURPOSE: purpose, // 여행 목적
       MVMN_NM: transport, // 이동 수단
-      AGE_GRP: ageGroup, // 연령대
-      GENDER: gender, // 성별
       TRAVEL_STYL_1: styleMapping[style], // 여행 스타일
       TRAVEL_MOTIVE_1: motive, // 여행 동기
       TRAVEL_STATUS_ACCOMPANY: sessionStorage.getItem('companionship'), // 동행 상태
