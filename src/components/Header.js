@@ -1,10 +1,10 @@
-//Header.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import profilePic from "../assets/images/사진.jpg";
 import searchIcon from "../assets/images/search.png";
 import bellIcon from "../assets/images/alarm.png";
 import logoImage from "../assets/images/logo.png";
+import PropTypes from "prop-types";
 import "./Header.css";
 
 function Header({ isLoggedIn, onLogout }) {
@@ -23,6 +23,35 @@ function Header({ isLoggedIn, onLogout }) {
   };
 
   const handleLogoClick = () => navigate("/");
+
+  // 외부 클릭 시 열려 있는 메뉴를 닫는 함수
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        !event.target.closest(".profile-container") && // 프로필 드롭다운 외부 클릭 감지
+        showDropdown
+      ) {
+        setShowDropdown(false); // 드롭다운 닫기
+      }
+      if (
+        !event.target.closest(".notification-container") && // 알림 드롭다운 외부 클릭 감지
+        showNotifications
+      ) {
+        setShowNotifications(false); // 알림 닫기
+      }
+      if (!event.target.closest(".search-bar") && showSearchBar) {
+        setShowSearchBar(false); // 검색 바 닫기
+      }
+    };
+
+    // 이벤트 리스너 추가
+    window.addEventListener("click", handleOutsideClick);
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, [showDropdown, showNotifications, showSearchBar]);
 
   return (
     <header>
@@ -83,5 +112,10 @@ function Header({ isLoggedIn, onLogout }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,  // isLoggedIn은 boolean 값으로 필수
+  onLogout: PropTypes.func.isRequired,    // onLogout은 함수로 필수
+};
 
 export default Header;
