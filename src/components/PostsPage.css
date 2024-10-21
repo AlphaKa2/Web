@@ -24,12 +24,12 @@
 
 /* pagination */
   .pagination {
-	display: flex;
 	justify-content: center;
 	align-items: center;
+	display: flex;
 	margin-top: 50px;
-	width: 100%;
 	margin-bottom: 100px;
+	width: 88%;
   }
   
   .pagination button {

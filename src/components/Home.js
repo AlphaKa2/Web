@@ -25,7 +25,7 @@ function Home() {
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
 
-  const scrollToSection = (sectionRef) => {
+  (sectionRef) => {
     sectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -180,7 +180,7 @@ function Home() {
         </section>
 
       <section ref={section3Ref} className="section third-courses">
-      <div class="main-container">
+      <div className="main-container">
 
         {/* 유튭 배너 */}
         <section className="mid-banner">

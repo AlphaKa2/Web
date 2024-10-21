@@ -42,6 +42,7 @@ ProfileTags.propTypes = {
   buttonText: PropTypes.string,
   showTags: PropTypes.bool,
   onFilterChange: PropTypes.func.isRequired,
+  onButtonClick: PropTypes.func.isRequired,
 };
 
 export default ProfileTags;

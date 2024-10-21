@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
 
-const Post = ({ region, title, description, image, tags, handlePostClick}) => {
+const EachPost = ({ region, title, content, image, tags, handlePostClick}) => {
 
   const handleButtonClick = (e) => {
     e.stopPropagation(); // Prevent triggering the post navigation
@@ -15,7 +14,7 @@ const Post = ({ region, title, description, image, tags, handlePostClick}) => {
         <img src={image} alt="" />
         <div style={{ flexGrow: 1 }}>
           <h2 className='title'>{title}</h2>
-          <p className="description">{description}</p>
+          <p className="description">{content}</p>
         </div>
         <div style={{ width: '100%', marginTop: '10px' }}>
           <h2 className='tags'>{tags}</h2>
@@ -32,13 +31,14 @@ const Post = ({ region, title, description, image, tags, handlePostClick}) => {
   );
 };
 
-Post.propTypes = {
+EachPost.propTypes = {
   region: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  content: PropTypes.string,
   image: PropTypes.string,
   tags: PropTypes.string,
-  postId: PropTypes.string.isRequired // Pass unique postId for navigation
+  // postId: PropTypes.number,
+  handlePostClick: PropTypes.func // handlePostClick의 propTypes 추가
 };
 
-export default Post;
+export default EachPost;

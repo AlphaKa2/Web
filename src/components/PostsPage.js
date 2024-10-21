@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Isotope from 'isotope-layout';
 import imagesLoaded from 'imagesloaded';
 import ProfileTags from './ProfileTags';
-import Post from './EachPost';
+import EachPost from './EachPost';
 import './PostsPage.css';
 import './EachPost.css';
 import './ProfileTags.css'
@@ -29,19 +29,19 @@ const PostsPage = () => {
 
 
   const posts = [
-    { id: 1, region: 'gyeonggi', title: 'Title 1', description: 'Content description 1', image: '../img/한강.jpg', tags: '#경기도 여행 #도시 #젊음' },
-    { id: 2, region: 'gangwon', title: 'Title 2', description: 'Content description 2', image: '../img/속초.jpeg', tags: '#강원도 여행 #속초' },
-    { id: 3, region: 'gyeonggi', title: 'Title 3', description: 'Content description 3', image: '../img/광교호수공원.jpg', tags: '#경기도 여행 #도시 #젊음' },
-    { id: 4, region: 'jeju', title: 'Title 4', description: 'Content description 4', image: '../img/성산일출봉.jpg', tags: '#제주도 여행 #성산일출봉' },
-    { id: 5, region: 'chungbuk', title: 'Title 5', description: 'Content description 5', image: '../img/단양팔경.jpg', tags: '#충청북도 여행 #단양' },
-    { id: 6, region: 'chungnam', title: 'Title 6', description: 'Content description 6', image: '../img/천안삼거리공원.jpg', tags: '#충청남도 여행 #천안' },
+    { postId: 1, region: 'gyeonggi', title: 'Title 1', content: 'Content description 1', image: '../img/한강.jpg', tags: '#경기도 여행 #도시 #젊음' },
+    { postId: 2, region: 'gyeonggi', title: 'Title 2', content: 'Content description 2', image: '../img/광교호수공원.jpg', tags: '#경기도 여행 #도시 #젊음' },
+    { postId: 3, region: 'gangwon', title: 'Title 3', content: 'Content description 3', image: '../img/속초.jpeg', tags: '#강원도 여행 #속초' },
+    { postId: 4, region: 'jeju', title: 'Title 4', content: 'Content description 4', image: '../img/성산일출봉.jpg', tags: '#제주도 여행 #성산일출봉' },
+    { postId: 5, region: 'chungbuk', title: 'Title 5', content: 'Content description 5', image: '../img/단양팔경.jpg', tags: '#충청북도 여행 #단양' },
+    { postId: 6, region: 'chungnam', title: 'Title 6', content: 'Content description 6', image: '../img/천안삼거리공원.jpg', tags: '#충청남도 여행 #천안' },
   ];
 
   // 필터링된 포스트 목록
   const filteredPosts = posts.filter(post =>
     (filter === '*' || post.region === filter.replace('.', '')) && (
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.tags.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
@@ -76,17 +76,22 @@ const PostsPage = () => {
           layoutMode: 'fitRows',
           transitionDuration: '0.5s',
         });
-
+  
         // 초기 필터 적용
         isotopeInstance.current.arrange({ filter });
       });
     }
-
+  
     // 필터가 변경될 때마다 Isotope 필터링 적용
     if (isotopeInstance.current) {
       isotopeInstance.current.arrange({ filter });
+  
+      // 필터링 후 강제 레이아웃 재정리
+      setTimeout(() => {
+        isotopeInstance.current.layout();
+      }, 500);  // 잠시 대기 후 레이아웃 재정리 (이미지가 로드되는 동안)
     }
-
+  
     // 클린업 함수
     return () => {
       if (isotopeInstance.current) {
@@ -94,10 +99,10 @@ const PostsPage = () => {
       }
     };
   }, [filter, currentPosts]); // filter와 currentPosts 의존성 추가
-
+  
   return (
     <div className="posts-page">
-      <ProfileTags onFilterChange={handleFilterChange} onButtonClick={handleNavigation} /> {/* handleFilterChange 전달 */}
+      <ProfileTags onFilterChange={handleFilterChange} onButtonClick={handleNavigation} />
       <div className="search-sort-container">
         <input
           type="text"
@@ -109,7 +114,7 @@ const PostsPage = () => {
       </div>
       <main className="posts" ref={postsRef}>
         {currentPosts.map(post => (
-          <Post key={post.id} region={post.region} title={post.title} description={post.description} image={post.image} tags={post.tags} handlePostClick={handlePostNavigation} />
+          <EachPost key={post.postId} region={post.region} title={post.title} description={post.content} image={post.image} tags={post.tags} handlePostClick={handlePostNavigation} />
         ))}
       </main>
       <div className="pagination">

@@ -7,6 +7,10 @@ article.post-item {
 	margin: 10px, auto;
 }
 
+article.post-item:hover{
+	cursor:pointer;
+}
+
 article.post-item div.post-content{
 	width: 93%;
 	height: 20%;
@@ -70,5 +74,3 @@ article.post-item div h2.tags {
 	background-color: #1d2fd1;
 	color: white;
   }
-  
-  
