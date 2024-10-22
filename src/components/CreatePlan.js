@@ -26,12 +26,12 @@ const regions = {
 };
 
 const companionshipOptions = [
-  '3인 이상 여행(가족 외)',
-  '자녀 동반 여행',
-  '2인 여행(가족 외)',
-  '나홀로 여행',
-  '2인 가족 여행',
-  '3대 동반 여행(친척 포함)'
+  'GROUP_OVER_3',
+  'WITH_CHILD',
+  'DUO',
+  'SOLO',
+  'FAMILY_DUO',
+  'EXTENDED_FAMILY'
 ];
 
 function CreatePlan() {

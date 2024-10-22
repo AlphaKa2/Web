@@ -110,11 +110,11 @@ function Login({ onLoginSuccess }) {
             </button>
             <button disabled>
               <img src={KakaoImage} alt="Kakao" />
-              Kakao (미구현)
+              Kakao
             </button>
             <button disabled>
               <img src={NaverImage} alt="Naver" />
-              Naver (미구현)
+              Naver
             </button>
           </div>
           <div className="signup-link">

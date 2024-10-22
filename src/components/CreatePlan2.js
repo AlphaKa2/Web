@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CreatePlan2.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -31,33 +31,50 @@ function CreatePlan2() {
 
   const handleSubmit = async () => {
     const travelDays = calculateTravelDays(startDate, endDate);
-
-    const requestData = {
+  
+    const request_data = {
       TRAVEL_PURPOSE: purpose,
       MVMN_NM: transport,
+      AGE_GRP: "20S", // 나이 그룹
+      GENDER: "여", // 성별
       TRAVEL_STYL_1: styleMapping[style],
       TRAVEL_MOTIVE_1: motive,
       TRAVEL_STATUS_ACCOMPANY: sessionStorage.getItem('companionship'),
       TRAVEL_STATUS_DAYS: travelDays,
       ROAD_ADDR: location,
-      recommendation_type: 'AI-GENERATED',
-      start_date: startDate,
-      end_date: endDate
+      recommendation_type: "AI-GENERATED",
+      start_date: "2024-10-14", // 동적으로 처리
+      end_date: "2024-10-16" // 동적으로 처리
     };
-
+  
     try {
-      // 서버로 보낼 데이터 확인 (콘솔 로그)
-      console.log('서버로 보낼 데이터:', requestData);
+      // AccessToken 및 user-id를 로컬 스토리지에서 가져오기
+      const accessToken = localStorage.getItem('accessToken');
+      const userId = localStorage.getItem('userId'); // user-id 추가
 
       // 백엔드 요청
-      const response = await axios.post('/plan-service/recommendations', requestData);
-      console.log('AI 추천 결과:', response.data);
+      const response = await axios.post(
+        '/plan-service/auth/recommendations/', 
+        request_data, 
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Authorization 헤더 추가
+            //'user-id': userId // user-id 헤더 추가
+          },
+        }
+      );
 
+      console.log('AI 추천 결과:', response.data);
+      
       // 요청이 성공하면 페이지 이동
       navigate('/itinerary');
-
+  
     } catch (error) {
-      console.error('AI 추천 오류:', error);
+      if (axios.isAxiosError(error)) {
+        console.error('Axios 오류:', error.message);
+      } else {
+        console.error('일반 오류:', error.message);
+      }
       alert('여행 계획을 생성하는 데 오류가 발생했습니다.');
     }
   };
