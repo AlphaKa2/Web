@@ -1,7 +1,8 @@
 .container1 {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
+    margin-top: -50px;
   }
   
   .background1 {
@@ -20,6 +21,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 1200px;
+    margin-bottom: 100px;
   }
   
   .form-row1 {
@@ -92,29 +94,31 @@
   
   .dropdown-menu1 {
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 30%;
+    width: 300px; /* 드롭다운 너비 */
     background-color: white;
     border: 1px solid #E0E0E0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
     border-radius: 5px;
     margin-top: 5px;
+    max-height: 200px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 스크롤 추가 */
   }
-  
-  .dropdown-menu1 ul {
+  .dropdown-list1 {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    font-size: 0.9rem;
   }
-  
-  .dropdown-menu1 li {
+  .dropdown-list1 li {
     padding: 10px;
     cursor: pointer;
   }
-  
-  .dropdown-menu1 li:hover {
+  .dropdown-list1 li:hover {
     background-color: #E0E0E0;
+  }
+  .dropdown-toggle1 {
+    cursor: pointer;
+    margin-left: 0.5rem;
   }
   

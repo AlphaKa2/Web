@@ -101,7 +101,7 @@ function Home() {
       <section ref={section1Ref} className="section first-section">
         <section className="banner">
           <h2>
-            우리가 걸어<span className="highlight">온 길</span>, <br />
+            우리가 걸어<span className="highlight">온 길</span><br />
             우리가 지나<span className="highlight">갈 길</span>
           </h2>
           <p>
@@ -161,10 +161,10 @@ function Home() {
                   <p className="post-description">{post.description}</p>
                   <div className="post-author-info">
                     <img src={post.authorProfilePic} alt="프로필" className="post-author-pic" />
-                    <div>
+                    <span>
                       <p>{post.author}</p>
                       <p className="post-date">{post.date}</p>
-                    </div>
+                    </span>
                   </div>
                   <div className="post-reactions">
                     <span>❤️ {post.likes}</span>

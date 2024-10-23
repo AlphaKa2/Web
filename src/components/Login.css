@@ -9,9 +9,9 @@ html, body {
   /* 전체 페이지 레이아웃 */
   .login-container {
     display: flex;
-    height: 88vh;
+    height: 80vh;
     padding-top: 0; /* 상단에 여백 제거 */
-    margin: 0; /* 전체 페이지의 여백도 제거 */
+    margin-top: -100px; /* 전체 페이지의 여백도 제거 */
   }
   
   /* 좌측 이미지 섹션 */
@@ -20,8 +20,9 @@ html, body {
     background-image: url('../assets/images/Login.jpg'); /* 절대 경로로 public 폴더에 저장된 이미지 참조 */
     background-size: cover;
     background-position: center;
-    height: 89vh; /* 화면 전체 높이를 채움 */
+    height: 100vh; /* 화면 전체 높이를 채움 */
     width: 60vw; /* 화면의 절반 너비를 차지 */
+    
   }
   
   /* 우측 로그인 폼 섹션 */

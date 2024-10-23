@@ -6,8 +6,8 @@
   background-image: url("../../public/ocean.png");
   background-size: cover;
   position: relative;
+  margin-top: -50px;
 }
-
 .travel-plan-box2 {
   background-color: white;
   padding: 40px 20px 20px 20px; /* 상단 padding을 추가하여 요소들을 아래로 이동 */
@@ -16,20 +16,17 @@
   width: 500px;
   position: relative;
 }
-
 .back-button2 {
   position: absolute;
   top: 10px; /* 컨테이너 기준 상단 위치 조정 */
   left: 10px;
-  background-color: #4b6bfb;
+  background-color: #4B6BFB;
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-  
 }
-
 .dropdown2,
 .submit-button2 {
   width: 100%;
@@ -39,7 +36,6 @@
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-
 .circle-slider2 {
   display: flex;
   align-items: center;
@@ -48,20 +44,16 @@
   position: relative;
   padding: 0 25px;
 }
-
 .slider-icon2 {
   width: 35px;
   height: 35px;
 }
-
 .left-icon2 {
   margin-right: -15px;
 }
-
 .right-icon2 {
   margin-left: -15px;
 }
-
 .line2 {
   position: absolute;
   top: 50%;
@@ -71,7 +63,6 @@
   background-color: #ccc;
   z-index: -1;
 }
-
 .circle2 {
   width: 35px;
   height: 35px;
@@ -82,23 +73,19 @@
   transition: background-color 0.3s;
   margin: 0 10px;
 }
-
 .circle2.active {
-  background-color: #4b6bfb;
+  background-color: #4B6BFB;
 }
-
 .style-label2 {
   margin-top: 20px;
   text-align: center;
   font-weight: bold;
   font-size: 1.0em;
-  color: #4b6bfb; /* 파란색 */
+  color: #4B6BFB; /* 파란색 */
 }
-
-
 .submit-button2 {
   margin-top: 40px;
-  background-color: #4b6bfb;
+  background-color: #4B6BFB;
   color: white;
   border: none;
   padding: 12px;
@@ -107,7 +94,6 @@
   font-size: 1em;
   transition: background-color 0.3s;
 }
-
 .submit-button2:hover {
-  background-color: #3a54e2;
+  background-color: #3A54E2;
 }

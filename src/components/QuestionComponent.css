@@ -7,8 +7,8 @@
 
 .question-number {
     position: absolute;
-    top: -55px;
-    right: 15px;
+    top: -100px;
+    right: -80px;
     font-size: 2.5vw;
     color: white;
     font-weight: bold;

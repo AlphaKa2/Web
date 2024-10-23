@@ -1,15 +1,15 @@
 /* 기본 스타일 설정 */
-body {
+/* body {
   font-family: 'Arial', sans-serif;
   background-color: #FFF;
   margin: 0;
   padding: 0;
   
-}
+} */
 
 .section {
   position: relative;
-}
+} 
 
 /* 첫 번째 섹션 스크롤 버튼 */
 .scroll-button1 {
@@ -71,13 +71,13 @@ body {
 
 
 
-a {
+/* a {
   text-decoration: none;
 }
 
 h1, h2, h3, p {
   margin: 0;
-}
+} */
 
 /* 배너 섹션 */
 .banner {
@@ -107,16 +107,23 @@ h1, h2, h3, p {
   z-index: 1; /* 텍스트 뒤에 위치 */
 }
 
-.banner h2, .banner p {
+.banner h2{
   position: relative;
   z-index: 2; /* 텍스트가 이미지 오버레이 위에 위치 */
-}
-
-.banner h2 {
+  bottom: 150px;
   font-size: 50px;
   font-weight: bold;
   margin-bottom: 20px;
 }
+
+.banner p{
+  position: relative;
+  z-index: 2; /* 텍스트가 이미지 오버레이 위에 위치 */
+  bottom: 150px;
+  color: rgb(57, 57, 57);
+}
+
+
 
 .banner p {
   font-size: 20px;
@@ -203,7 +210,7 @@ h1, h2, h3, p {
 .post-author-info {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .post-author-pic {
@@ -217,7 +224,7 @@ h1, h2, h3, p {
 }
 
 .post-reactions {
-  margin-top: -30px;
+  margin-top: -25px;
   display: flex;
   justify-content: flex-end; /* 아이콘들을 우측으로 정렬 */
   align-items: center;
@@ -232,16 +239,17 @@ h1, h2, h3, p {
   margin-right: 1px; /* 하트와 댓글 사이 간격을 5px로 설정 */
 }
 
-.post-description {
-  font-size: 10px;
-  color: #888;
-  margin-top: 10px;
-}
 
 .post-date {
   font-size: 10px;
   color: #999;
   margin-top: 4px;
+}
+
+.post-description {
+  font-size: 10px;
+  color: #888;
+  margin-top: 10px;
 }
 
 /* 캐러셀 애로우 버튼 */

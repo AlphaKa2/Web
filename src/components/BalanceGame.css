@@ -4,19 +4,20 @@
     align-items: center;
     padding-bottom: 0;
     background-color: #4b6bfb;
-    height: 100vh;
+    height: 87vh;
     overflow: hidden;
+    margin-top: -30px;
 }
 
 .question-header {
-    text-align: left;
+    text-align: center;
     font-size: 2.5vw; /* 상대 단위로 변경 */
     font-weight: bold;
     font-family: poppin;
     color: white;
     margin-left: 1vw;
     margin-bottom: 3vw;
-    margin-top: 1vw;
+    margin-top: 5vw;
     max-width: 1600px;
 }
 

@@ -1,15 +1,14 @@
 // src/axios.js
 import axios from 'axios';
-
 // Axios 인스턴스 생성
 const instance = axios.create({
   baseURL: 'http://172.16.210.60:8000', // API 기본 URL
-  timeout: 10000, // 요청 타임아웃 (10초)
+  timeout: 1000000, // 요청 타임아웃 (1000초)
   headers: {
     'Content-Type': 'application/json', // 기본 헤더 설정
   },
+  withCredentials: true
 });
-
 // 응답 또는 에러 처리 인터셉터 (선택 사항)
 instance.interceptors.response.use(
   (response) => response,
@@ -18,22 +17,21 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-instance.interceptors.request.use(request => {
-  // 로컬 스토리지에서 accessToken 가져오기
-  const accessToken = localStorage.getItem('accessToken');
-  console.log(accessToken);
-  console.log('Axios 요청:', request);  // 요청 객체를 출력
-
-  // accessToken이 존재하면 Authorization 헤더에 추가
-  if (accessToken) {
-    request.headers['Authorization'] = `Bearer ${accessToken}`;
+instance.interceptors.request.use(
+  function (config) {
+    // 로컬 스토리지에서 accessToken 가져오기
+    const accessToken = localStorage.getItem('accessToken');
+    console.log(accessToken);
+    // accessToken이 존재하면 Authorization 헤더에 추가
+    if (accessToken) {
+      config.headers['Authorization'] = `Bearer ${accessToken}`;
+    }
+    // 변경된 config 반환
+    return config;
+  },
+  function (error) {
+    // 요청 오류가 있는 경우 처리
+    return Promise.reject(error);
   }
-  return request;
-}, error => {
-
-  console.error('Axios 요청 오류:', error);
-  return Promise.reject(error);
-});
-
+);
 export default instance;
