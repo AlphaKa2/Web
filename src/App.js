@@ -89,7 +89,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/password-reset" element={<PasswordReset />} />
           <Route path="/profile-page" element={<ProfilePage />} />
-          <Route path="/travel-plan" element={<PrivateRoute><TravelPlan /></PrivateRoute>} />
+          <Route path="/travel-plan" element={<TravelPlan />} />
           <Route path="/mbti-travel" element={<PrivateRoute><MBTITravel /></PrivateRoute>} />
           <Route path="/blog-posts" element={<PrivateRoute><BlogPosts /></PrivateRoute>} />
           <Route path="/posts-page" element={<PostsPage />} />
@@ -101,7 +101,7 @@ function App() {
           <Route path="/balance-game" element={<BalanceGame />} />
           <Route path="/mbti-result" element={<MBTIResult />} />
           <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/create-post" element={<PrivateRoute><CreatePostPage /></PrivateRoute>} />
+          <Route path="/create-post" element={<CreatePostPage />} />
           <Route path="/each-post" element={<PrivateRoute><EachPost /></PrivateRoute>} />
           <Route path="/profile-tags" element={<PrivateRoute><ProfileTags /></PrivateRoute>} />
           <Route path="/posts/:postId" element={<PostDetailPage />} />

@@ -19,4 +19,21 @@ instance.interceptors.response.use(
   }
 );
 
+instance.interceptors.request.use(request => {
+  // 로컬 스토리지에서 accessToken 가져오기
+  const accessToken = localStorage.getItem('accessToken');
+  console.log(accessToken);
+  console.log('Axios 요청:', request);  // 요청 객체를 출력
+
+  // accessToken이 존재하면 Authorization 헤더에 추가
+  if (accessToken) {
+    request.headers['Authorization'] = `Bearer ${accessToken}`;
+  }
+  return request;
+}, error => {
+
+  console.error('Axios 요청 오류:', error);
+  return Promise.reject(error);
+});
+
 export default instance;

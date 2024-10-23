@@ -1,15 +1,15 @@
-import React, { useRef, useState, useEffect} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import ProfileTags from './ProfileTags';
 import './CreatePostPage.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import apiClient from '../axios.js';
 import { v4 as uuidv4 } from 'uuid'; // 고유 식별자 생성에 UUID 사용
 import { jwtDecode } from 'jwt-decode'; // jwt-decode 추가
 
-
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const MAX_FILE_SIZE = 100 * 1024 * 1024; // 10MB
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']; // 허용된 파일 확장자
 
 const CreatePostPage = () => {
@@ -46,7 +46,7 @@ const CreatePostPage = () => {
     return true;
   };
 
-  // 이미지 업로드 함수
+  // presigned URL을 통해 S3에 파일 업로드 함수
   const uploadImageToS3 = async (file) => {
     if (!validateFile(file)) {
       return null; // 파일이 유효하지 않으면 업로드 중단
@@ -54,24 +54,44 @@ const CreatePostPage = () => {
     const uniqueIdentifier = uuidv4(); // 고유 식별자 생성
     const fileExtension = file.name.split('.').pop(); // 파일 확장자 추출
     const fileName = `${uniqueIdentifier}.${fileExtension}`; // 고유 식별자를 포함한 파일 이름
-    // 이미지 업로드를 위해 presigned URL을 요청
-    const { data: presignedData } = await axios.post('/api/s3/presigned-url', {
-      fileName,
-      contentType: file.type,
-    });
-    const { url: presignedUrl, imageUrl } = presignedData; // 서명된 URL과 S3에 저장될 이미지 URL
+   
     try {
-      // S3에 파일 업로드 (PUT 요청)
-      await axios.put(presignedUrl, file, {
+      // presigned URL 요청
+      const { data: presignedData } = await apiClient.post('/blog-service/api/s3/presigned-url', {
+        fileName,
+        contentType: file.type,
+      });
+      
+      // 서버에서 받은 presigned URL을 변수에 담음
+      const presignedUrl = presignedData.data.url;
+      console.log('Presigned URL 담기는지 확인:', presignedUrl);
+    
+      // presigned URL을 사용해 S3에 파일 업로드
+      const uploadResponse = await axios.put(presignedUrl, file, {
         headers: {
-          'Content-Type': file.type,
+          'Content-Type': file.type, // 올바른 MIME 타입 설정
         },
       });
-      return imageUrl; // 업로드된 이미지의 S3 URL 반환
+    
+      // S3 업로드 응답 로그
+      console.log('S3 업로드 응답 상태:', uploadResponse.status);
+      console.log('S3 업로드 응답 데이터:', uploadResponse.data);
+    
+      const imageUrl = `https://alphaka-storage.s3.amazonaws.com/${fileName}`; // S3에 저장된 최종 이미지 URL
+      return imageUrl; // 이미지 URL 반환
+    
     } catch (error) {
-      console.error('S3 업로드 오류:', error);
+      // S3 업로드 중 발생한 오류 로그
+      if (error.response) {
+        console.error('S3 업로드 실패: 응답 상태 코드', error.response.status);
+        console.error('S3 업로드 실패: 응답 데이터', error.response.data);
+      } else {
+        console.error('S3 업로드 중 발생한 오류:', error.message);
+      }
       return null;
     }
+    
+    
   };
 
   const handleSave = async () => {
@@ -83,11 +103,11 @@ const CreatePostPage = () => {
       content: content, // 에디터 내용
       visible: true, // 고정 값으로 설정 (필요에 따라 변경 가능)
       commentable: true, // 고정 값으로 설정 (필요에 따라 변경 가능)
-      tagNames: tags.split(',').map(tag => tag.trim()), // 태그들을 배열로 변환
+      tagNames: [], // 태그들을 배열로 변환
     };
 
     try {
-      const response = await axios.post('/api/posts', postData, {
+      const response = await apiClient.post('/blog-service/auth/api/posts', postData, {
         headers: {
           'Content-Type': 'application/json',
         },
