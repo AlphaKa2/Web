@@ -90,20 +90,20 @@ function App() {
           <Route path="/password-reset" element={<PasswordReset />} />
           <Route path="/profile-page" element={<ProfilePage />} />
           <Route path="/travel-plan" element={<TravelPlan />} />
-          <Route path="/mbti-travel" element={<PrivateRoute><MBTITravel /></PrivateRoute>} />
-          <Route path="/blog-posts" element={<PrivateRoute><BlogPosts /></PrivateRoute>} />
+          <Route path="/mbti-travel" element={<MBTITravel />} />
+          <Route path="/blog-posts" element={<BlogPosts />} />
           <Route path="/posts-page" element={<PostsPage />} />
           <Route path="/create-plan" element={<CreatePlan />} />
           <Route path="/create-plan2" element={<CreatePlan2 />} />
           <Route path="/itinerary" element={<ItineraryPage />} />
-          <Route path="/my-trip-list" element={<PrivateRoute><MyTripList /></PrivateRoute>} />
+          <Route path="/my-trip-list" element={<MyTripList />} />
           <Route path="/misc" element={<Misc />} />
           <Route path="/balance-game" element={<BalanceGame />} />
           <Route path="/mbti-result" element={<MBTIResult />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/create-post" element={<CreatePostPage />} />
-          <Route path="/each-post" element={<PrivateRoute><EachPost /></PrivateRoute>} />
-          <Route path="/profile-tags" element={<PrivateRoute><ProfileTags /></PrivateRoute>} />
+          <Route path="/each-post" element={<EachPost />} />
+          <Route path="/profile-tags" element={<ProfileTags />} />
           <Route path="/posts/:postId" element={<PostDetailPage />} />
         </Routes>
       </Layout>

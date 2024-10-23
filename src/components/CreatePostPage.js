@@ -77,7 +77,7 @@ const CreatePostPage = () => {
       console.log('S3 업로드 응답 상태:', uploadResponse.status);
       console.log('S3 업로드 응답 데이터:', uploadResponse.data);
     
-      const imageUrl = `https://alphaka-storage.s3.amazonaws.com/${fileName}`; // S3에 저장된 최종 이미지 URL
+      const imageUrl = `https://alphaka-storage.s3.amazonaws.com/posts/${fileName}`; // S3에 저장된 최종 이미지 URL
       return imageUrl; // 이미지 URL 반환
     
     } catch (error) {
