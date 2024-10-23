@@ -18,7 +18,7 @@ function SignupInfo() {
   // 이메일 중복 확인 로직
   const checkEmailAvailability = async () => {
     try {
-      const response = await axios.get(`/user-service/users/email-check?email=${email}`);
+      const response = await axios.get(`/user-service/users/email/${email}/exist`);
       setIsEmailAvailable(response.data.data); // 백엔드에서 이메일 중복 여부 확인
       if (response.data.data) {
         alert("사용 가능한 이메일입니다.");
@@ -34,7 +34,7 @@ function SignupInfo() {
   // 닉네임 중복 확인 로직
   const checkNicknameAvailability = async () => {
     try {
-      const response = await axios.get(`/user-service/users/${nickname}/exist`);
+      const response = await axios.get(`/user-service/users/nickname/${nickname}/exist`);
       if (response.status === 200) {
         setIsNicknameAvailable(true); // 중복되지 않으면 true
         alert("사용 가능한 닉네임입니다.");

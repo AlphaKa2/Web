@@ -9,8 +9,8 @@ const ProfileTags = ({ buttonText = "글쓰기", showTags = true, onFilterChange
       <section className="member">
         <article className="profile">
           <img src="../img/잔망루피.png" alt="프로필 이미지" />
-          <p id="name">자신의 이름</p>
-          <p id="mbti" style={{ color: 'blue' }}>ACLJ(여유로운 탐험가)</p>
+          <p id="name">홍길동</p>
+          <p id="mbti" style={{ color: 'blue' }}>RCSP<br></br>(자유로운 절약형휴양가)</p>
           <p id="status" style={{ color: 'grey' }}>안녕하세요.</p>
           <br />
           <p>팔로잉: <span id="following">32&emsp;</span>팔로워: <span id="follower">42</span></p>

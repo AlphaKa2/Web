@@ -1,11 +1,11 @@
 /* 기본 스타일 설정 */
-/* body {
+body {
   font-family: 'Arial', sans-serif;
   background-color: #FFF;
   margin: 0;
   padding: 0;
   
-} */
+}
 
 .section {
   position: relative;
@@ -71,13 +71,13 @@
 
 
 
-/* a {
+a {
   text-decoration: none;
 }
 
 h1, h2, h3, p {
   margin: 0;
-} */
+}
 
 /* 배너 섹션 */
 .banner {
@@ -221,10 +221,11 @@ h1, h2, h3, p {
   margin-right: 10px;
   max-width: 24px; /* 크기 제한 해제 */
   max-height: 24px; /* 크기 제한 해제 */
+  margin-top: 15px;
 }
 
 .post-reactions {
-  margin-top: -25px;
+  margin-top: -30px;
   display: flex;
   justify-content: flex-end; /* 아이콘들을 우측으로 정렬 */
   align-items: center;
@@ -243,7 +244,6 @@ h1, h2, h3, p {
 .post-date {
   font-size: 10px;
   color: #999;
-  margin-top: 4px;
 }
 
 .post-description {

@@ -131,10 +131,10 @@ function Home() {
                   <p className="post-description">{post.description}</p>
                   <div className="post-author-info">
                     <img src={post.authorProfilePic} alt="프로필" className="post-author-pic" />
-                    <div>
-                      <p>{post.author}</p>
-                      <p className="post-date">{post.date}</p>
-                    </div>
+                    <span>
+                      <p className="post-author">{post.author}</p>
+                      <span className="post-date">{post.date}</span>
+                    </span>
                   </div>
                   <div className="post-reactions">
                     <span>❤️ {post.likes}</span>
@@ -163,7 +163,7 @@ function Home() {
                     <img src={post.authorProfilePic} alt="프로필" className="post-author-pic" />
                     <span>
                       <p>{post.author}</p>
-                      <p className="post-date">{post.date}</p>
+                      <span className="post-date">{post.date}</span>
                     </span>
                   </div>
                   <div className="post-reactions">

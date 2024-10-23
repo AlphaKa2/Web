@@ -41,7 +41,7 @@ function SignupEmailVerification() {
           phoneNumber: phone,
           authenticationCode: code,
         });
-        if (response.status === 202) {
+        if (response.data.status === 202) {
           alert("인증이 완료되었습니다.");
           setIsVerified(true);
         } else {
