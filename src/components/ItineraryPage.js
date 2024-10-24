@@ -74,7 +74,7 @@ const ItineraryPage = () => {
       </div>
 
       <div className="map-container">
-        <LoadScript googleMapsApiKey="AIzaSyD379m_qluKwVTRNMpf2yjywwGTGDsHgos">
+        <LoadScript googleMapsApiKey="비밀이다">
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
             center={center}  // 현재 지도 중심 좌표
