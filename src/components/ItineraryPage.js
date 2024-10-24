@@ -14,7 +14,7 @@ const ItineraryPage = () => {
   const isMapInitialized = useRef(false); // To track if the map is already initialized
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyD379m_qluKwVTRNMpf2yjywwGTGDsHgos',
+    googleMapsApiKey: '비밀이다',
     version: '3.47', // Specify version to avoid unexpected issues
   });
    // Clean up the map instance when the component unmounts
